@@ -110,8 +110,9 @@
 ; Delete using x like in vim
 <!x::
 {
-    Send "{BS}"
+    Send "{DEL}"
 }
+
 
 
 ; Remap Capslock to Ctrl:

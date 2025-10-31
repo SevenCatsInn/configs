@@ -13,31 +13,27 @@ $Env:KOMOREBI_CONFIG_HOME = 'C:\Users\fvaccari\.komorebi\'
 
 
 
-# function ll {Get-ChildItem | Format-Wide -Column 5 }
+function ll {Get-ChildItem | Format-Wide -Column 5 }
 function lll {Get-ChildItem | Sort-Object LastWriteTime}
 
 function ex { explorer.exe .}
 
-#function l { # Simple list 
-#    param (
-#        [string]$Path = ".",
-#        [switch]$FoldersOnly
-#    )
-#
-#    $items = Get-ChildItem -Path $Path 
-#
-#    # Iterate through the items
-#    foreach ($item in $items) {
-#        if ($item.PsIsContainer) {
-#            # Highlight folders in yellow
-#            Write-Host $item.Name -ForegroundColor Yellow
-#        } elseif (-not $FoldersOnly) {
-#            # Show files in white (default color)
-#            Write-Host $item.Name -ForegroundColor White
-#        }
-#    }
-#}
+function venv_activate {
+	$paths = @(
+			"./.venv/Scripts/Activate.ps1",
+			"../.venv/Scripts/Activate.ps1",
+			"../../.venv/Scripts/Activate.ps1"
+			)
 
+		foreach ($path in $paths) {
+			if (Test-Path $path) {
+				& $path
+					return
+			}
+		}
+
+	Write-Error "Virtual environment not found"
+}
 
 function l { # Print the last modified last
     param (
@@ -62,6 +58,10 @@ function l { # Print the last modified last
 
 function rmrf ([string] $path){ rm -Force -Recurse $path}
 
+function pdb ([string] $path){ uv run -m pdb $path}
+function ipdb ([string] $path){ ipython --colors linux -m ipdb $path}
+function ipp { ipython --colors linux --no-confirm-exit --no-banner $args}
+
 function Watch([string] $command, [int] $period) {
     while ($true) {
         Clear-Host
@@ -73,7 +73,9 @@ function Watch([string] $command, [int] $period) {
 # Add VS Code to PATH and
 # Add an alias that makes vsc open vscode maximized
 $env:Path += ";C:\Users\$env:USERNAME\scoop\apps\vscode\current\bin\"
-Set-Alias vsc "code"
-
 # Make a nvim-config variable
 $NVIM += "C:\Users\$env:USERNAME\AppData\Local\nvim\init.lua"
+
+# Aliases
+Set-Alias vsc "code"
+

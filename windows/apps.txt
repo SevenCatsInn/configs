@@ -3,6 +3,13 @@
 - Autohotkey
 - scoop
 - WinDynamicDesktop
-- Vscode
 - Neovim
 - Windows terminal
+- Oh my posh
+
+Extensions
+- SponsorBlock
+- uBlock
+- DarkReader
+- Vimium
+- Lean Library

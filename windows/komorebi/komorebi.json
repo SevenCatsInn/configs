@@ -3,6 +3,7 @@
   "app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.json",
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
+  "stackbar": {"height": 10},
   "animation":{
 	  "enabled": true,
 	  "duration": 200,
@@ -15,12 +16,7 @@
   "resize_delta": 500,
   "transparency": true,
   "transparency_alpha": 210,
-  "theme": {
-    "palette": "Base16",
-    "name": "Ashes",
-    "unfocused_border": "Base03",
-    "bar_accent": "Base0D"
-  },
+
   "monitors": [
     {
       "workspaces": [

@@ -38,8 +38,7 @@
     "editor.fontWeight": 400,
     "editor.fontSize": 13,
     "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.minimap.enabled": false,
-    "editor.minimap.autohide": true,
+    "editor.minimap.autohide": "mouseover",
     "editor.minimap.scale": 2,
     "editor.guides.indentation": false,
     "editor.unfoldOnClickAfterEndOfLine": true,
@@ -58,7 +57,7 @@
     "debug.internalConsoleOptions": "neverOpen",
     "debug.terminal.clearBeforeReusing": true,
     
-    "python.defaultInterpreterPath": "c:\\Users\\fvaccari\\repositories\\sandbox\\.venv\\Scripts\\python.exe",
+    "python.defaultInterpreterPath": "C:\\Users\\fvaccari\\repos\\adet\\.venv",
     "python.languageServer": "Pylance",
     "python.terminal.executeInFileDir": true,
     "python.terminal.activateEnvInCurrentTerminal": true,

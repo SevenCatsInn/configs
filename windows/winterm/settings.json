@@ -41,6 +41,10 @@
             "id": "User.closePane"
         },
         {
+            "command": "scrollDownPage",
+            "id": "User.scrollDownPage"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -70,6 +74,10 @@
             "id": "User.moveFocus.87C324ED"
         },
         {
+            "command": "scrollUpPage",
+            "id": "User.scrollUpPage"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -94,7 +102,7 @@
     "firstWindowPreference": "defaultProfile",
     "initialCols": 150,
     "initialPosition": ",",
-    "initialRows": 60,
+    "initialRows": 40,
     "keybindings": 
     [
         {
@@ -180,6 +188,34 @@
         {
             "id": "User.moveFocus.F747588A",
             "keys": "ctrl+shift+j"
+        },
+        {
+            "id": "User.scrollDownPage",
+            "keys": "ctrl+j"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+down"
+        },
+        {
+            "id": "User.scrollUpPage",
+            "keys": "ctrl+k"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+up"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+left"
+        },
+        {
+            "id": "Terminal.ToggleMarkMode",
+            "keys": "ctrl+shift+space"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+m"
         }
     ],
     "launchMode": "focus",
@@ -193,112 +229,78 @@
     {
         "defaults": 
         {
-            "colorScheme": "Tokyo Night Storm"
+            "adjustIndistinguishableColors": "always",
+            "antialiasingMode": "cleartype",
+            "colorScheme": "Tokyo Night",
+            "cursorShape": "filledBox",
+            "font": 
+            {
+                "builtinGlyphs": true,
+                "cellHeight": "1.3",
+                "face": "JetBrainsMono Nerd Font",
+                "features": {},
+                "size": 10,
+                "weight": "normal"
+            },
+            "intenseTextStyle": "bold",
+            "opacity": 82,
+            "padding": "0",
+            "scrollbarState": "hidden",
+            "useAcrylic": true
         },
         "list": 
         [
             {
-                "antialiasingMode": "cleartype",
-                "colorScheme": "One Half Dark",
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo",
-                "cursorShape": "filledBox",
-                "font": 
-                {
-                    "face": "JetBrainsMonoNL Nerd Font",
-                    "weight": "medium"
-                },
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell",
-                "opacity": 92,
-                "useAcrylic": false
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "Command Prompt",
-                "padding": "0"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": false,
-                "name": "Git Bash",
-                "source": "Git"
-            },
-            {
-                "adjustIndistinguishableColors": "always",
-                "backgroundImage": null,
-                "backgroundImageOpacity": 0.12,
-                "colorScheme": "Tokyo Night",
-                "cursorShape": "filledBox",
-                "experimental.retroTerminalEffect": false,
-                "font": 
-                {
-                    "builtinGlyphs": true,
-                    "cellHeight": "1.3",
-                    "face": "JetBrainsMono Nerd Font",
-                    "features": {},
-                    "size": 11,
-                    "weight": "normal"
-                },
+                "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -nologo",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
-                "intenseTextStyle": "bold",
-                "name": "PowerShell",
-                "opacity": 80,
-                "padding": "0",
-                "scrollbarState": "hidden",
+                "name": "PowerShell7",
                 "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "C:\\Users\\fvaccari\\",
-                "useAcrylic": true
-            },
-            {
-                "commandline": "%WINDIR%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy ByPass -NoExit -Command \"& 'C:\\Users\\fvaccari\\scoop\\apps\\miniconda3\\25.3.1-1\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\Users\\fvaccari\\scoop\\apps\\miniconda3\\25.3.1-1' \"",
-                "guid": "{024e7ce2-696e-574a-97ed-9b10e2141e63}",
-                "icon": "C:\\Users\\fvaccari\\scoop\\apps\\miniconda3\\25.3.1-1\\Menu\\anaconda_powershell_prompt.ico",
-                "name": "Anaconda PowerShell Prompt (25.3.1-1)",
                 "startingDirectory": "C:\\Users\\fvaccari"
             },
             {
-                "commandline": "%WINDIR%\\System32\\cmd.exe \"/K\" C:\\Users\\fvaccari\\scoop\\apps\\miniconda3\\25.3.1-1\\Scripts\\activate.bat C:\\Users\\fvaccari\\scoop\\apps\\miniconda3\\25.3.1-1",
-                "guid": "{ae8fe0da-125f-51f7-88ee-ba79b2e203da}",
-                "icon": "C:\\Users\\fvaccari\\scoop\\apps\\miniconda3\\25.3.1-1\\Menu\\anaconda_prompt.ico",
-                "name": "Anaconda Prompt (25.3.1-1)",
-                "startingDirectory": "C:\\Users\\fvaccari"
+                "cursorShape": "filledBox",
+                "guid": "{50874a2e-c17f-56b4-a302-e75b6a7a2262}",
+                "hidden": false,
+                "name": "Arch",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
             }
         ]
     },
     "schemes": 
     [
         {
-            "background": "#F5EDD9",
+            "background": "#FDF6E3",
             "black": "#002B36",
-            "blue": "#9BC6ED",
+            "blue": "#268BD2",
             "brightBlack": "#073642",
             "brightBlue": "#839496",
             "brightCyan": "#93A1A1",
-            "brightGreen": "#586E75",
+            "brightGreen": "#4C7556",
             "brightPurple": "#6C71C4",
             "brightRed": "#CB4B16",
-            "brightWhite": "#BDBDBD",
+            "brightWhite": "#A19D90",
             "brightYellow": "#657B83",
-            "cursorColor": "#002B36",
+            "cursorColor": "#FF5E44",
             "cyan": "#2AA198",
             "foreground": "#657B83",
             "green": "#859900",
-            "name": "Custom Solarized Light",
+            "name": "Based Solarized Light",
             "purple": "#D33682",
             "red": "#DC322F",
-            "selectionBackground": "#2C4D57",
-            "white": "#7D7B6D",
-            "yellow": "#CF9C00"
+            "selectionBackground": "#9BAECC",
+            "white": "#8A867C",
+            "yellow": "#B58900"
         },
         {
             "background": "#1A1B2C",
@@ -312,7 +314,7 @@
             "brightRed": "#F7768E",
             "brightWhite": "#C0CAF5",
             "brightYellow": "#E0AF68",
-            "cursorColor": "#C0CAF5",
+            "cursorColor": "#FF2671",
             "cyan": "#7DCFFF",
             "foreground": "#A9B1DC",
             "green": "#73DACA",
