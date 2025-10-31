@@ -1,4 +1,4 @@
-# Custom Aliases by Francesco Vaccari
+# Custom Aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -9,14 +9,14 @@ alias naut='nautilus . &'
 alias tree2='tree -L 2'
 alias tree3='tree -L 3'
 alias rdl='readlink -f'
-alias vsc="code"
-alias temps="watch -n 0.2 sensors"
-alias psall="top -c"
-alias duu="du -h --max-depth=1"
-alias ipython="python -m IPython"
-alias tmuxKill="tmux kill-server"
-alias tmuxAttach="tmux attach"
-alias ipp="ipython --colors linux --no-confirm-exit --no-banner"
+alias vsc='code'
+alias temps='watch -n 0.2 sensors'
+alias psall='top -c'
+alias duu='du -h --max-depth=1'
+alias tmuxKill='tmux kill-server'
+alias tmuxAttach='tmux attach'
+alias ipp='ipython --colors linux --no-confirm-exit --no-banner'
+alias pdb='python $'
 
 
 # Function to change the tab title

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define backup directory
-backup_dir="$HOME/syncthing/configs/linux/"
+backup_dir="$HOME/syncthing/configs/linux"
 
 # Create backup directory if it doesn't exist
 mkdir -p "$backup_dir"
@@ -33,8 +33,10 @@ backup_item "/etc/keyd/default.conf" "$backup_dir"
 backup_item "$HOME/.vimrc" "$backup_dir"
 backup_item "$HOME/.config/alacritty/alacritty.toml" "$backup_dir"
 backup_item "$HOME/.config/kitty/kitty.conf" "$backup_dir"
+backup_item "$HOME/.config/helix/config.toml" "$backup_dir"
+backup_item "$HOME/.config/helix/languages.toml" "$backup_dir"
 
-#
+
 # Backup this script itself
 script_path=$(readlink -f "$0")
 backup_item "$script_path" "$backup_dir/backup_configs.sh"

@@ -1,0 +1,15 @@
+# On fresh install run or copy `runtime` folder
+# from source to .config/helix/
+# hx --grammar fetch
+# hx --grammar build 
+
+[[language]]
+name = "python"
+file-types = ["py"]
+indent = { tab-width = 4, unit = " " }
+formatter = { command = "ruff", args = ["format", "-"] }
+language-servers = ["basedpyright"]
+
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
