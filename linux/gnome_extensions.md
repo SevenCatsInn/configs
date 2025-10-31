@@ -1,0 +1,9 @@
+- Alphabetical app grid
+- Appindicator and KStatusNotifierItem support
+- Bluetooth quick connect
+- Gnome clipboard
+- TacTile
+- Highlight focus
+- Just perfection
+- Tiling shell
+- User themes

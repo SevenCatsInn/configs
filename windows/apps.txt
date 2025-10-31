@@ -1,0 +1,8 @@
+- Monitorian (Brightness)
+- Charmy (hot corners)
+- Autohotkey
+- scoop
+- WinDynamicDesktop
+- Vscode
+- Neovim
+- Windows terminal
