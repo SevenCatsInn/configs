@@ -1,145 +1,94 @@
-# Define the source paths
-$vscodeSourcePath = "$HOME\scoop\apps\vscode\current\data\user-data\User"
-$terminalSourceFile = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-$nvimSourceFolder = "$env:LOCALAPPDATA\nvim"  # Location of the nvim folder in AppData\Local
-$ahkSourceFolder = "$HOME\ahk"  # Location of the ahk folder in the home directory
-$komorebiSourceFolder = "$HOME\.komorebi"
-$profileFile = $PROFILE  # PowerShell profile
-
-# Define the destination path
-$destinationPath = "$HOME\OneDrive - Delft University of Technology\BackupConfigs"
-
-# Get the current script path
-$scriptPath = $MyInvocation.MyCommand.Path
-
-# Ensure the destination directory exists
-if (-not (Test-Path -Path $destinationPath)) {
-    New-Item -ItemType Directory -Path $destinationPath | Out-Null
+# Backup Configuration
+$config = @{
+    Destination = "$HOME\OneDrive - Delft University of Technology\configs\windows"
+    Files = @(
+        @{ Source = "$HOME\scoop\apps\vscode\current\data\user-data\User"; Dest = "vscode"; Files = @("settings.json", "keybindings.json") }
+        @{ Source = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"; Dest = "winterm" }
+        @{ Source = "$HOME\AppData\Roaming\helix"; Dest = "helix"; Files = @("languages.toml", "config.toml") }
+        @{ Source = $PROFILE; Dest = "poshProfile" }
+        @{ Source = $MyInvocation.MyCommand.Path; Dest = "backupScript" }
+    )
+    Folders = @(
+        @{ Source = "$env:LOCALAPPDATA\nvim"; Dest = "nvim" }
+        @{ Source = "$HOME\.komorebi"; Dest = "komorebi" }
+        @{ Source = "$HOME\ahk"; Dest = "ahk" }
+    )
 }
 
-# Define subfolders for VS Code, Windows Terminal, Neovim, and other files
-$vscodeFolder = Join-Path -Path $destinationPath -ChildPath "vscode"
-$wintermFolder = Join-Path -Path $destinationPath -ChildPath "winterm"
-$komorebiFolder = Join-Path -Path $destinationPath -ChildPath "komorebi"
-$ahkFolder = Join-Path -Path $destinationPath -ChildPath "ahk"
-$profileFolder = Join-Path -Path $destinationPath -ChildPath "poshProfile"
-$scriptFolder = Join-Path -Path $destinationPath -ChildPath "backupScript"
+# Helper Functions
+function Ensure-Directory {
+    param([string]$Path)
+    if (-not (Test-Path $Path)) {
+        New-Item -ItemType Directory -Path $Path -Force | Out-Null
+    }
+}
 
-# Ensure the subfolders exist
-if (-not (Test-Path -Path $vscodeFolder)) { New-Item -ItemType Directory -Path $vscodeFolder | Out-Null }
-if (-not (Test-Path -Path $wintermFolder)) { New-Item -ItemType Directory -Path $wintermFolder | Out-Null }
-if (-not (Test-Path -Path $komorebiFolder)) { New-Item -ItemType Directory -Path $komorebiFolder | Out-Null }
-if (-not (Test-Path -Path $ahkFolder)) { New-Item -ItemType Directory -Path $ahkFolder | Out-Null }
-if (-not (Test-Path -Path $profileFolder)) { New-Item -ItemType Directory -Path $profileFolder | Out-Null }
-if (-not (Test-Path -Path $scriptFolder)) { New-Item -ItemType Directory -Path $scriptFolder | Out-Null }
+function Copy-FileWithLogging {
+    param(
+        [string]$Source,
+        [string]$Destination,
+        [string]$Name
+    )
 
-# Define the files to copy from VS Code
-$vscodeFilesToCopy = @("settings.json", "keybindings.json")
-
-# Copy VS Code files to the 'vscode' subfolder
-foreach ($file in $vscodeFilesToCopy) {
-    $sourceFile = Join-Path -Path $vscodeSourcePath -ChildPath $file
-    $destinationFile = Join-Path -Path $vscodeFolder -ChildPath $file
-    
-    # Remove any previous versions
-    if (Test-Path -Path $destinationFile) {
-        Remove-Item -Path $destinationFile -Force
-        Write-Host "Removed old version of $file from $vscodeFolder"
+    if (-not (Test-Path $Source)) {
+        Write-Host "Skipped: $Name (source not found)" -ForegroundColor Yellow
+        return
     }
 
-    if (Test-Path -Path $sourceFile) {
-        # Copy the file
-        Copy-Item -Path $sourceFile -Destination $destinationFile -Force
-        Write-Host "Copied $file to $vscodeFolder"
+    if (Test-Path $Destination) {
+        Remove-Item $Destination -Force
+    }
+
+    Copy-Item -Path $Source -Destination $Destination -Force
+    Write-Host "Backed up: $Name" -ForegroundColor Green
+}
+
+function Copy-FolderWithLogging {
+    param(
+        [string]$Source,
+        [string]$Destination,
+        [string]$Name
+    )
+
+    if (-not (Test-Path $Source)) {
+        Write-Host "Skipped: $Name (source not found)" -ForegroundColor Yellow
+        return
+    }
+
+    if (Test-Path $Destination) {
+        Remove-Item $Destination -Recurse -Force
+    }
+
+    Copy-Item -Path $Source -Destination $Destination -Recurse -Force
+    Write-Host "Backed up: $Name" -ForegroundColor Green
+}
+
+# Main Execution
+Ensure-Directory $config.Destination
+
+# Process Files
+foreach ($item in $config.Files) {
+    $destFolder = Join-Path $config.Destination $item.Dest
+    Ensure-Directory $destFolder
+
+    if ($item.Files) {
+        # Multiple files from same source
+        foreach ($file in $item.Files) {
+            $sourceFile = Join-Path $item.Source $file
+            $destFile = Join-Path $destFolder $file
+            Copy-FileWithLogging -Source $sourceFile -Destination $destFile -Name "$($item.Dest)/$file"
+        }
     } else {
-        Write-Host "File $file does not exist in the source directory."
+        # Single file
+        $destFile = Join-Path $destFolder (Split-Path $item.Source -Leaf)
+        Copy-FileWithLogging -Source $item.Source -Destination $destFile -Name $item.Dest
     }
 }
 
-# Copy Windows Terminal settings.json to the 'winterm' subfolder
-$terminalDestinationFile = Join-Path -Path $wintermFolder -ChildPath "settings.json"
-
-# Remove any previous version of Windows Terminal settings
-if (Test-Path -Path $terminalDestinationFile) {
-    Remove-Item -Path $terminalDestinationFile -Force
-    Write-Host "Removed old version of settings.json from $wintermFolder"
+# Process Folders
+foreach ($item in $config.Folders) {
+    $destFolder = Join-Path $config.Destination $item.Dest
+    Copy-FolderWithLogging -Source $item.Source -Destination $destFolder -Name $item.Dest
 }
 
-if (Test-Path -Path $terminalSourceFile) {
-    # Copy the file
-    Copy-Item -Path $terminalSourceFile -Destination $terminalDestinationFile -Force
-    Write-Host "Copied Windows Terminal settings.json to $wintermFolder"
-} else {
-    Write-Host "Windows Terminal settings.json does not exist in the source directory."
-}
-
-# Copy PowerShell profile to the 'poshProfile' subfolder
-$profileDestinationFile = Join-Path -Path $profileFolder -ChildPath (Split-Path -Leaf $profileFile)
-if (Test-Path -Path $profileDestinationFile) {
-    Remove-Item -Path $profileDestinationFile -Force
-    Write-Host "Removed old version of PowerShell profile from $profileFolder"
-}
-
-if (Test-Path -Path $profileFile) {
-    # Copy the file
-    Copy-Item -Path $profileFile -Destination $profileFolder -Force
-    Write-Host "Copied PowerShell profile to $profileFolder"
-} else {
-    Write-Host "PowerShell profile does not exist at $profileFile"
-}
-
-# Copy the nvim folder to the 'nvim' subfolder
-if (Test-Path -Path $nvimSourceFolder) {
-    # Remove any previous nvim folder in the backup location
-    $nvimDestinationFolder = Join-Path -Path $destinationPath -ChildPath "nvim"
-    if (Test-Path -Path $nvimDestinationFolder) {
-        Remove-Item -Path $nvimDestinationFolder -Recurse -Force
-        Write-Host "Removed old nvim folder from $destinationPath"
-    }
-
-    # Copy the nvim folder
-    Copy-Item -Path $nvimSourceFolder -Destination $nvimDestinationFolder -Recurse -Force
-    Write-Host "Copied nvim folder to $destinationPath"
-} else {
-    Write-Host "nvim folder does not exist in the source directory."
-}
-
-# Copy the komorebi folder to the 'komorebi' subfolder
-if (Test-Path -Path $komorebiSourceFolder) {
-    # Remove any previous komorebi folder in the backup location
-    if (Test-Path -Path $komorebiFolder) {
-        Remove-Item -Path $komorebiFolder -Recurse -Force
-        Write-Host "Removed old komorebi folder from $komorebiFolder"
-    }
-
-    # Copy the komorebi folder
-    Copy-Item -Path $komorebiSourceFolder -Destination $komorebiFolder -Recurse -Force
-    Write-Host "Copied komorebi folder to $komorebiFolder"
-} else {
-    Write-Host "komorebi folder does not exist in the source directory."
-}
-
-# Copy the ahk folder to the 'ahk' subfolder
-if (Test-Path -Path $ahkSourceFolder) {
-    # Remove any previous ahk folder in the backup location
-    if (Test-Path -Path $ahkFolder) {
-        Remove-Item -Path $ahkFolder -Recurse -Force
-        Write-Host "Removed old ahk folder from $ahkFolder"
-    }
-
-    # Copy the ahk folder
-    Copy-Item -Path $ahkSourceFolder -Destination $ahkFolder -Recurse -Force
-    Write-Host "Copied ahk folder to $ahkFolder"
-} else {
-    Write-Host "ahk folder does not exist in the source directory."
-}
-
-# Copy this script to the 'script' subfolder
-$scriptDestinationFile = Join-Path -Path $scriptFolder -ChildPath (Split-Path -Leaf $scriptPath)
-if (Test-Path -Path $scriptDestinationFile) {
-    Remove-Item -Path $scriptDestinationFile -Force
-    Write-Host "Removed old version of the script from $scriptFolder"
-}
-
-Copy-Item -Path $scriptPath -Destination $scriptFolder -Force
-Write-Host "Copied this script to $scriptFolder"
+Write-Host "`nBackup completed!" -ForegroundColor Cyan
