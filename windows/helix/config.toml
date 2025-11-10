@@ -1,10 +1,8 @@
-theme = "github_dark_transparent"
+theme = "term16_dark"
 
 [editor]
 line-number = "relative"
-
-[editor.lsp]
-auto-signature-help = false
+lsp.auto-signature-help = false
 
 [editor.cursor-shape]
 insert = "bar"
@@ -13,7 +11,7 @@ select = "underline"
 
 [keys.normal]
 # For some reason I need to reassign these
-# otherwise C-i does not work
+# otherwise C-i does not work (win terminal)
 C-o = "jump_backward"
 C-i = "jump_forward"
 
@@ -33,12 +31,12 @@ M = "goto_window_center"
 H = "goto_window_top"
 L = "goto_window_bottom"
 G = "goto_file_end"
-"%" = "match_brackets"
+# "%" = "match_brackets"
 ";" = "repeat_last_motion" # There is no equivalent for vim's comma right now
 V = ["select_mode", "extend_to_line_bounds"] # Visual line
 "C-v" = "copy_selection_on_next_line" # Mimic visual block
 U = "switch_to_uppercase"
-"C-r" = "redo" 
+"C-r" = "redo"
 C = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode"]
 D = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection"]
 
@@ -110,6 +108,10 @@ w = ["move_next_word_start", "yank_main_selection_to_clipboard", "collapse_selec
 W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
 g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"] }
 
+[keys.select.g]
+# comments
+c = "toggle_comments"
+
 [keys.insert]
 # Esc always collapses the selection
 esc = ["collapse_selection", "normal_mode"]
@@ -125,6 +127,7 @@ j = { k = ["normal_mode", ":write"] }
 "$" = "goto_line_end"
 "^" = "goto_first_nonwhitespace"
 G = "goto_file_end"
+";" = "repeat_last_motion" # There is no equivalent for vim's comma right now
 D = ["extend_to_line_bounds", "delete_selection", "normal_mode"]
 C = ["goto_line_start", "extend_to_line_bounds", "change_selection"]
 "%" = "match_brackets"
@@ -152,5 +155,5 @@ Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_sta
 p = "replace_selections_with_clipboard" # No life without this
 P = "paste_clipboard_before"
 
-# Escape the madness! No more fighting with the cursor! Or with multiple cursors!
+# Esc collapses selection
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
