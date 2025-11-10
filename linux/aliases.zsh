@@ -15,6 +15,7 @@ alias psall='top -c'
 alias duu='du -h --max-depth=1'
 alias tmuxKill='tmux kill-server'
 alias tmuxAttach='tmux attach'
+alias vix='~/Downloads/evil-helix-amd64-linux/helix/hx'
 alias ipp='ipython --colors linux --no-confirm-exit --no-banner'
 alias pdb='python $'
 
