@@ -3,6 +3,9 @@ theme = "github_dark_transparent"
 [editor]
 line-number = "relative"
 
+[editor.lsp]
+auto-signature-help = false
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -25,10 +28,13 @@ C-l = "select_next_sibling"
 0 = "goto_line_start"
 "$" = "goto_line_end"
 "^" = "goto_first_nonwhitespace"
+M = "goto_window_center"
+H = "goto_window_top"
+L = "goto_window_bottom"
 G = "goto_file_end"
 "%" = "match_brackets"
-V = ["select_mode", "extend_to_line_bounds"]
-"C-v" = ["copy_selection_on_next_line"]
+V = ["select_mode", "extend_to_line_bounds"] # Visual line
+"C-v" = ["copy_selection_on_next_line"] # Visual block
 C = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode"]
 D = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection"]
 
@@ -102,7 +108,8 @@ g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "normal_mode"]
-j = { k = "normal_mode" }
+"C-space" = "signature_help"
+j = { k = ["normal_mode", ":write"] }
 
 [keys.select]
 # Muscle memory
@@ -131,7 +138,7 @@ C-a = ["append_mode", "collapse_selection"]
 k = ["extend_line_up", "extend_to_line_bounds"]
 j = ["extend_line_down", "extend_to_line_bounds"]
 
-# Clipboards over registers ye ye
+# Clipboards over registers
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
 x = ["yank_main_selection_to_clipboard", "delete_selection"]
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
