@@ -8,6 +8,7 @@ name = "python"
 file-types = ["py"]
 indent = { tab-width = 4, unit = " " }
 formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
 language-servers = ["basedpyright"]
 
 [language-server.basedpyright]
