@@ -35,6 +35,9 @@ backup_item "$HOME/.config/alacritty/alacritty.toml" "$backup_dir"
 backup_item "$HOME/.config/kitty/kitty.conf" "$backup_dir"
 backup_item "$HOME/.config/helix/config.toml" "$backup_dir"
 backup_item "$HOME/.config/helix/languages.toml" "$backup_dir"
+backup_item "$HOME/.config/sway" "$backup_dir"
+backup_item "$HOME/.config/waybar" "$backup_dir"
+backup_item "$HOME/.config/fuzzel" "$backup_dir"
 
 
 # Backup this script itself
