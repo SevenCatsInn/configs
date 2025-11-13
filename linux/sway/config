@@ -78,7 +78,7 @@ input type:touchpad {
 default_border pixel 1
 gaps inner 2
 gaps outer 2
-client.focused #4c7899 #285577 #ffffff #3e1b89 #3e1b89
+client.focused #3e1b89 #3e1b89 #ffffff #3e1b89 #3e1b89
 
 # Opacity rules (0.0 = transparent, 1.0 = opaque)
 # Focused windows: 100% opaque, Unfocused windows: 90% opaque
@@ -113,9 +113,8 @@ for_window [class=".*"] opacity 1.0
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
+
 # Moving around:
-#
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
