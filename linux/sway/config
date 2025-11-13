@@ -18,23 +18,15 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-# Your preferred application launcher
+# Your preferred application launcher, with the source folder for binaries
 set $menu XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$HOME/.local/share fuzzel
 
 include /etc/sway/config-vars.d/*
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# This is commented in Debian, because the Sway wallpaper files are in a separate
-# package `sway-backgrounds`. Installing this package drops a config file to
-# /etc/sway/config.d/
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output * bg /usr/share/backgrounds/gnome/morphogenesis-d.svg fill
+# Wallpaper
 output * bg /home/francesco/Pictures/Wallpapers/macos-big-sur.jpg fill
 
 
-# 
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -83,8 +75,8 @@ input type:touchpad {
 }
 
 # Window aesthetics
-default_border pixel 2
-gaps inner 4
+default_border pixel 1
+gaps inner 2
 gaps outer 2
 client.focused #4c7899 #285577 #ffffff #3e1b89 #3e1b89
 
