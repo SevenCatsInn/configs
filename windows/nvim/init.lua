@@ -67,14 +67,14 @@ require("transparent").setup({
 vim.g.mapleader = " "
 
 -- Telescope
-vim.keymap.set("n", "<leader>sf", ":Telescope find_files<cr>")
-vim.keymap.set("n", "<leader>j", ":Telescope buffers<cr><esc>")
-vim.keymap.set("n", "<leader>sg", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>sw", ":Telescope grep_string<cr>") --search word under cursor
-vim.keymap.set("n", "<leader>so", ":Telescope aerial<cr>")
-vim.keymap.set("n", "<leader>sr", ":Telescope resume<cr>")
+vim.keymap.set("n", "<leader>f", ":Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr><esc>")
+vim.keymap.set("n", "<leader>g", ":Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>w", ":Telescope grep_string<cr>") --search word under cursor
+vim.keymap.set("n", "<leader>s", ":Telescope aerial<cr>")
+vim.keymap.set("n", "<leader>'", ":Telescope resume<cr>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<cr>")
-vim.keymap.set('n', '<leader>sm', ":Telescope diagnostics<cr>")
+vim.keymap.set('n', '<leader>d', ":Telescope diagnostics<cr>")
 vim.keymap.set('n', '<leader>p', ":Telescope<cr>")
 
 -- LSP
@@ -83,8 +83,7 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "gR", ":Telescope lsp_references<cr>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>l", vim.lsp.buf.hover)
+vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>mp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>mn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>mm", vim.diagnostic.setloclist)
@@ -108,7 +107,7 @@ vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>") -- exit terminal insert mode w/
 vim.keymap.set("t", "<C-l>",  "<C-l>")
 
 -- Python string utils
-vim.keymap.set("n", "<leader>di", "o\"\"\"<esc>yypO") -- insert docstring
+vim.keymap.set("n", "<leader>id", "o\"\"\"<esc>yypO") -- insert docstring
 vim.keymap.set("n", "<leader>cs", "i\'\'<esc>ha<cr><esc>ll") -- cut string in two lines
 vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- cut f-string in two lines
 
