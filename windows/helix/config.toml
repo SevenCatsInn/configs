@@ -106,11 +106,11 @@ c = ["select_mode", "toggle_comments"]
 j = ["select_mode", "extend_to_line_bounds","extend_line_below", "toggle_comments", "collapse_selection", "normal_mode"]
 k = ["select_mode", "extend_to_line_bounds","extend_line_above", "toggle_comments", "collapse_selection", "normal_mode"]
 
-[keys.normal.space.h]
+[keys.normal.space]
 # Hunk manipulation
-r = ":reset-diff-change"
-p = "goto_prev_change"
-n = "goto_next_change"
+h = { r = ":reset-diff-change", p = "goto_prev_change", n = "goto_next_change" }
+# Stop messages
+m = { d = ":lsp-stop", e = ":lsp-restart", n = "goto_next_diag", p = "goto_prev_diag"}
 
 [keys.normal.y]
 y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "normal_mode", "collapse_selection"]
