@@ -1,4 +1,4 @@
-theme = "base16_terminal"
+theme = "github_dark_transparent"
 
 [editor]
 line-number = "relative"
@@ -33,6 +33,8 @@ C-h = "select_prev_sibling"
 C-j = "shrink_selection"
 C-k = "expand_selection"
 C-l = "select_next_sibling"
+"{" = "goto_prev_paragraph"
+"}" = "goto_next_paragraph"
  
 # Muscle memory
 V = ["select_mode", "extend_to_line_bounds"] # Visual line
