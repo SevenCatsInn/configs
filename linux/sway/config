@@ -177,6 +177,7 @@ for_window [class=".*"] opacity 1.0
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+ 
 # Scratchpad
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
