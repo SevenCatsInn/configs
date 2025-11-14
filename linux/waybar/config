@@ -2,9 +2,9 @@
     "layer": "top",
     "position": "top",
     "height": 30,
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "battery", "clock"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window" ],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "battery"],
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -17,14 +17,14 @@
     },
 
     "clock": {
-        "format": "{:%H:%M}",
+        "format": "{:%d-%m-%Y <b>%H:%M</b>}",
         "tooltip-format": "{:%Y-%m-%d}"
     },
 
     "battery": {
-        "format": " {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%"
+        "format": "pow {capacity}%",
+        "format-charging": "pow {capacity}%",
+        "format-plugged": "pow {capacity}%"
     },
 
     "network": {
