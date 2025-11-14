@@ -32,8 +32,6 @@ require("paq")({
 	-- Miscellaneous
 	"tpope/vim-surround",       -- surround commands
 	"petertriho/nvim-scrollbar", -- Add scollbar
-	"declancm/cinnamon.nvim",   -- Smooth scroll
-	-- "m4xshen/autoclose.nvim",   -- Autoclose brackets
 	"nvim-tree/nvim-web-devicons", -- Icons
 	"stevearc/oil.nvim",        -- Explorer
 	"stevearc/aerial.nvim",     -- Outline
@@ -75,14 +73,14 @@ vim.keymap.set("n", "<leader>s", ":Telescope aerial<cr>")
 vim.keymap.set("n", "<leader>'", ":Telescope resume<cr>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<cr>")
 vim.keymap.set('n', '<leader>d', ":Telescope diagnostics<cr>")
-vim.keymap.set('n', '<leader>p', ":Telescope<cr>")
+vim.keymap.set('n', '<leader>t', ":Telescope<cr>")
 
 -- LSP
 vim.diagnostic.config({ virtual_text = true }) -- enable virt text diagnostics
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-vim.keymap.set("n", "gR", ":Telescope lsp_references<cr>")
+vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>mp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>mn", vim.diagnostic.goto_next)
@@ -158,21 +156,6 @@ require("gitsigns").setup({
 	-- Scrollbar interface w/ git signs
 	require("scrollbar.handlers.gitsigns").setup()
 })
-
--- Brackets autoclose (disabled)
--- require("autoclose").setup({
--- 	options = {
--- 		disable_when_touch = true,
--- 		disable_command_mode = true,
--- 	}
--- })
-
--- Smooth scroller (Only enable C-d and C-u)
-local cinnamon = require("cinnamon")
-cinnamon.setup()
--- Centered scrolling:
-vim.keymap.set("n", "<C-U>", function() cinnamon.scroll("<C-U>zz") end)
-vim.keymap.set("n", "<C-D>", function() cinnamon.scroll("<C-D>zz") end)
 
 
 -- *** FUNCTIONS
