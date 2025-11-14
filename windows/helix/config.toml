@@ -1,4 +1,4 @@
-theme = "term16_dark"
+theme = "base16_terminal"
 
 [editor]
 line-number = "relative"
@@ -6,7 +6,8 @@ soft-wrap.enable = true
 auto-pairs = false
 lsp.auto-signature-help = false
 end-of-line-diagnostics = 'hint'
-
+default-yank-register = "+" # Yank to sys clipboard
+ 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -37,12 +38,7 @@ C-l = "select_next_sibling"
 V = ["select_mode", "extend_to_line_bounds"] # Visual line
 "C-v" = "copy_selection_on_next_line" # Mimic visual block
 "C-r" = "redo"
-"%" = "match_brackets"
 "A-;" = "repeat_last_motion"
-
-# Search for word under cursor
-"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
-"#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
 
 [keys.insert]
 "C-space" = "signature_help"
@@ -51,7 +47,6 @@ j = { k = ["normal_mode", ":write"] }
 [keys.select]
 V = "extend_to_line_bounds"
 G = "extend_to_file_end"
-"%" = "match_brackets"
 i = "select_textobject_inner"
 a = "select_textobject_around"
 "A-;" = "repeat_last_motion"
