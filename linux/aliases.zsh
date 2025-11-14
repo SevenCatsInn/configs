@@ -15,20 +15,5 @@ alias psall='top -c'
 alias duu='du -h --max-depth=1'
 alias tmuxKill='tmux kill-server'
 alias tmuxAttach='tmux attach'
-alias vix='~/Downloads/evil-helix-amd64-linux/helix/hx'
 alias ipp='ipython --colors linux --no-confirm-exit --no-banner'
 alias pdb='python $'
-
-
-# Function to change the tab title
-function set-title() {
-  if [[ -z "$ORIG" ]]; then
-    ORIG=$PS1
-  fi
-  TITLE="\[\e]2;$*\a\]"
-  PS1=${ORIG}${TITLE}
-}
-
-# Change string before the terminal input
-# PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\] \W \[\033[00m\]> "
-
