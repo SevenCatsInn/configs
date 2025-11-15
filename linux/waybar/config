@@ -22,9 +22,10 @@
     },
 
     "battery": {
+        "interval": 5,
         "format": "pow {capacity}%",
-        "format-charging": "pow {capacity}%",
-        "format-plugged": "pow {capacity}%"
+        "format-charging": "pow {capacity}%+",
+        "format-plugged": "pow {capacity}%+"
     },
 
     "network": {
