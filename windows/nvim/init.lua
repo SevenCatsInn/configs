@@ -59,11 +59,8 @@ require("transparent").setup({
 	-- extra_groups = { 'NormalFloat' },
 })
 
-
-
 -- *** KEYMAPS
 vim.g.mapleader = " "
-
 -- Telescope
 vim.keymap.set("n", "<leader>f", ":Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr><esc>")
@@ -113,7 +110,7 @@ vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- cut f-string i
 -- *** SETUPS
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
-require("mason-lspconfig").setup({ automatic_enable = true })
+require("mason-lspconfig").setup({automatic_enable = true})
 require("nvim-treesitter").setup()
 
 -- Blink (autocomplete)
@@ -146,13 +143,6 @@ require("scrollbar").setup({
 
 -- Gitsigns
 require("gitsigns").setup({
-	-- signs in gutter & hunk navigation
-	signs = {
-		add          = { text = "+" },
-		delete       = { text = "-" },
-		change       = { text = "~" },
-		changedelete = { text = "±" },
-	},
 	-- Scrollbar interface w/ git signs
 	require("scrollbar.handlers.gitsigns").setup()
 })

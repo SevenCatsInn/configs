@@ -1,40 +1,40 @@
 require("paq")({
-  -- Paq manager
-  "savq/paq-nvim",
+	-- Paq manager
+	"savq/paq-nvim",
 
-  -- LSP, Mason, Treesitter
-  "neovim/nvim-lspconfig",
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
-  "nvim-treesitter/nvim-treesitter",
+	-- LSP, Mason, Treesitter
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"nvim-treesitter/nvim-treesitter",
 
-  -- Git
-  "tpope/vim-fugitive",
-  "lewis6991/gitsigns.nvim",
+	-- Git
+	"tpope/vim-fugitive",
+	"lewis6991/gitsigns.nvim",
 
-  -- LaTeX
-  "lervag/vimtex",
+	-- LaTeX
+	"lervag/vimtex",
 
-  -- Search tools
-  "junegunn/fzf",
-  "junegunn/fzf.vim",
-  "nvim-telescope/telescope.nvim",
-  "nvim-lua/plenary.nvim", -- telescope dep
+	-- Search tools
+	"junegunn/fzf",
+	"junegunn/fzf.vim",
+	"nvim-telescope/telescope.nvim",
+	"nvim-lua/plenary.nvim", -- telescope dep
 
-  -- Autocompletion
-  "saghen/blink.cmp",
+	-- Autocompletion
+	"saghen/blink.cmp",
 
-  -- Theming
-  "folke/tokyonight.nvim",
-  "projekt0n/github-nvim-theme",
-  "xiyaowong/transparent.nvim",
+	-- Theming
+	"folke/tokyonight.nvim",
+	"projekt0n/github-nvim-theme",
+	"xiyaowong/transparent.nvim",
 
-  -- Miscellaneous
-  "tpope/vim-surround",       -- surround commands
-  "petertriho/nvim-scrollbar", -- Add scollbar
-  "nvim-tree/nvim-web-devicons", -- Icons
-  "stevearc/oil.nvim",        -- Explorer
-  "stevearc/aerial.nvim",     -- Outline
+	-- Miscellaneous
+	"tpope/vim-surround",       -- surround commands
+	"petertriho/nvim-scrollbar", -- Add scollbar
+	"nvim-tree/nvim-web-devicons", -- Icons
+	"stevearc/oil.nvim",        -- Explorer
+	"stevearc/aerial.nvim",     -- Outline
 })
 
 
@@ -55,15 +55,12 @@ vim.g.have_nerd_font = true
 -- Colorscheme
 vim.cmd.colorscheme("github_dark")
 require("transparent").setup({
-  exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
-  -- extra_groups = { 'NormalFloat' },
+	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
+	-- extra_groups = { 'NormalFloat' },
 })
-
-
 
 -- *** KEYMAPS
 vim.g.mapleader = " "
-
 -- Telescope
 vim.keymap.set("n", "<leader>f", ":Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr><esc>")
@@ -113,69 +110,62 @@ vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- cut f-string i
 -- *** SETUPS
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
-require("mason-lspconfig").setup({ automatic_enable = true })
+require("mason-lspconfig").setup({automatic_enable = true})
 require("nvim-treesitter").setup()
 
 -- Blink (autocomplete)
 require("blink.cmp").setup({
-  signature = { enabled = true },
-  appearance = {
-  nerd_font_variant = 'normal',
-  use_nvim_cmp_as_default = true, -- theme
-  }
+	signature = { enabled = true },
+	appearance = {
+		nerd_font_variant = 'normal',
+		use_nvim_cmp_as_default = true, -- theme
+	}
 })
 
 -- File explorer (oil)
 require("oil").setup({
-  view_options = {
-  sort = { 
-  { "type", "asc" },
-  { "mtime", "desc" },
-  }
-  }
+	view_options = {
+		sort = { 
+			{ "type", "asc" },
+			{ "mtime", "desc" },
+		}
+	}
 }) 
 
 require("nvim-web-devicons").setup() -- nerd icons
 
 -- Scrollbar on the right (w/ diagnostics & git)
 require("scrollbar").setup({
-  marks = {
-  Cursor = { text = "█" }
-  }
+	marks = {
+		Cursor = { text = "█" }
+	}
 })
 
 -- Gitsigns
 require("gitsigns").setup({
-  -- signs in gutter & hunk navigation
-  signs = {
-  add          = { text = "+" },
-  delete       = { text = "-" },
-  change       = { text = "~" },
-  changedelete = { text = "±" },
-  },
-  -- Scrollbar interface w/ git signs
-  require("scrollbar.handlers.gitsigns").setup()
+	-- Scrollbar interface w/ git signs
+	require("scrollbar.handlers.gitsigns").setup()
 })
 
 
 -- *** FUNCTIONS
 -- Toggle diagnostic messages
 function DiagonsticsToggle()
-  vim.diagnostic.enable(
-  not vim.diagnostic.is_enabled()
-  )
+	vim.diagnostic.enable(
+		not vim.diagnostic.is_enabled()
+	)
 end
 
 -- Toggle Aerial  or focus it
 -- NOTE: outline is provided by LSP
 function AerialToggleFocus()
-  local aerial = require("aerial")
-  aerial.setup()
-  if not aerial.is_open() then
-  aerial.toggle()
-  else
-  aerial.focus()
-  end
+	local aerial = require("aerial")
+	aerial.setup()
+	if not aerial.is_open() then
+		aerial.toggle()
+	else
+		aerial.focus()
+	end
 end
 
 -- Assign keymaps to the functions above defined
