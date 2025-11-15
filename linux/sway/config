@@ -73,6 +73,9 @@ client.focused #3e1b89 #3e1b89 #ffffff #3e1b89 #3e1b89
 for_window [app_id=".*"] opacity 1.0
 for_window [class=".*"] opacity 1.0
 
+# Make matplotlib windows floating
+for_window [title="Figure.*"] floating enable
+
 ### Key bindings
 # Basics
     # Start a terminal
