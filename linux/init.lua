@@ -1,42 +1,40 @@
 require("paq")({
-	-- Paq manager
-	"savq/paq-nvim",
+  -- Paq manager
+  "savq/paq-nvim",
 
-	-- LSP, Mason, Treesitter
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"nvim-treesitter/nvim-treesitter",
+  -- LSP, Mason, Treesitter
+  "neovim/nvim-lspconfig",
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "nvim-treesitter/nvim-treesitter",
 
-	-- Git
-	"tpope/vim-fugitive",
-	"lewis6991/gitsigns.nvim",
+  -- Git
+  "tpope/vim-fugitive",
+  "lewis6991/gitsigns.nvim",
 
-	-- LaTeX
-	"lervag/vimtex",
+  -- LaTeX
+  "lervag/vimtex",
 
-	-- Search tools
-	"junegunn/fzf",
-	"junegunn/fzf.vim",
-	"nvim-telescope/telescope.nvim",
-	"nvim-lua/plenary.nvim", -- telescope dep
+  -- Search tools
+  "junegunn/fzf",
+  "junegunn/fzf.vim",
+  "nvim-telescope/telescope.nvim",
+  "nvim-lua/plenary.nvim", -- telescope dep
 
-	-- Autocompletion
-	"saghen/blink.cmp",
+  -- Autocompletion
+  "saghen/blink.cmp",
 
-	-- Theming
-	"folke/tokyonight.nvim",
-	"projekt0n/github-nvim-theme",
-	"xiyaowong/transparent.nvim",
+  -- Theming
+  "folke/tokyonight.nvim",
+  "projekt0n/github-nvim-theme",
+  "xiyaowong/transparent.nvim",
 
-	-- Miscellaneous
-	"tpope/vim-surround",       -- surround commands
-	"petertriho/nvim-scrollbar", -- Add scollbar
-	"declancm/cinnamon.nvim",   -- Smooth scroll
-	-- "m4xshen/autoclose.nvim",   -- Autoclose brackets
-	"nvim-tree/nvim-web-devicons", -- Icons
-	"stevearc/oil.nvim",        -- Explorer
-	"stevearc/aerial.nvim",     -- Outline
+  -- Miscellaneous
+  "tpope/vim-surround",       -- surround commands
+  "petertriho/nvim-scrollbar", -- Add scollbar
+  "nvim-tree/nvim-web-devicons", -- Icons
+  "stevearc/oil.nvim",        -- Explorer
+  "stevearc/aerial.nvim",     -- Outline
 })
 
 
@@ -57,8 +55,8 @@ vim.g.have_nerd_font = true
 -- Colorscheme
 vim.cmd.colorscheme("github_dark")
 require("transparent").setup({
-	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
-	-- extra_groups = { 'NormalFloat' },
+  exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
+  -- extra_groups = { 'NormalFloat' },
 })
 
 
@@ -75,14 +73,14 @@ vim.keymap.set("n", "<leader>s", ":Telescope aerial<cr>")
 vim.keymap.set("n", "<leader>'", ":Telescope resume<cr>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<cr>")
 vim.keymap.set('n', '<leader>d', ":Telescope diagnostics<cr>")
-vim.keymap.set('n', '<leader>p', ":Telescope<cr>")
+vim.keymap.set('n', '<leader>t', ":Telescope<cr>")
 
 -- LSP
 vim.diagnostic.config({ virtual_text = true }) -- enable virt text diagnostics
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-vim.keymap.set("n", "gR", ":Telescope lsp_references<cr>")
+vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>mp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>mn", vim.diagnostic.goto_next)
@@ -120,79 +118,64 @@ require("nvim-treesitter").setup()
 
 -- Blink (autocomplete)
 require("blink.cmp").setup({
-	signature = { enabled = true },
-	appearance = {
-		nerd_font_variant = 'normal',
-		use_nvim_cmp_as_default = true, -- theme
-	}
+  signature = { enabled = true },
+  appearance = {
+  nerd_font_variant = 'normal',
+  use_nvim_cmp_as_default = true, -- theme
+  }
 })
 
 -- File explorer (oil)
 require("oil").setup({
-	view_options = {
-		sort = { 
-			{ "type", "asc" },
-			{ "mtime", "desc" },
-		}
-	}
+  view_options = {
+  sort = { 
+  { "type", "asc" },
+  { "mtime", "desc" },
+  }
+  }
 }) 
 
 require("nvim-web-devicons").setup() -- nerd icons
 
 -- Scrollbar on the right (w/ diagnostics & git)
 require("scrollbar").setup({
-	marks = {
-		Cursor = { text = "█" }
-	}
+  marks = {
+  Cursor = { text = "█" }
+  }
 })
 
 -- Gitsigns
 require("gitsigns").setup({
-	-- signs in gutter & hunk navigation
-	signs = {
-		add          = { text = "+" },
-		delete       = { text = "-" },
-		change       = { text = "~" },
-		changedelete = { text = "±" },
-	},
-	-- Scrollbar interface w/ git signs
-	require("scrollbar.handlers.gitsigns").setup()
+  -- signs in gutter & hunk navigation
+  signs = {
+  add          = { text = "+" },
+  delete       = { text = "-" },
+  change       = { text = "~" },
+  changedelete = { text = "±" },
+  },
+  -- Scrollbar interface w/ git signs
+  require("scrollbar.handlers.gitsigns").setup()
 })
-
--- Brackets autoclose (disabled)
--- require("autoclose").setup({
--- 	options = {
--- 		disable_when_touch = true,
--- 		disable_command_mode = true,
--- 	}
--- })
-
--- Smooth scroller (Only enable C-d and C-u)
-local cinnamon = require("cinnamon")
-cinnamon.setup()
--- Centered scrolling:
-vim.keymap.set("n", "<C-U>", function() cinnamon.scroll("<C-U>zz") end)
-vim.keymap.set("n", "<C-D>", function() cinnamon.scroll("<C-D>zz") end)
 
 
 -- *** FUNCTIONS
 -- Toggle diagnostic messages
 function DiagonsticsToggle()
-	vim.diagnostic.enable(
-		not vim.diagnostic.is_enabled()
-	)
+  vim.diagnostic.enable(
+  not vim.diagnostic.is_enabled()
+  )
 end
 
 -- Toggle Aerial  or focus it
 -- NOTE: outline is provided by LSP
 function AerialToggleFocus()
-	local aerial = require("aerial")
-	aerial.setup()
-	if not aerial.is_open() then
-		aerial.toggle()
-	else
-		aerial.focus()
-	end
+  local aerial = require("aerial")
+  aerial.setup()
+  if not aerial.is_open() then
+  aerial.toggle()
+  else
+  aerial.focus()
+  end
 end
 
 -- Assign keymaps to the functions above defined

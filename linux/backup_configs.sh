@@ -21,13 +21,11 @@ backup_item() {
     fi
 }
 
-
 # Backup configurations
 backup_item "$HOME/.oh-my-zsh/custom/aliases.zsh" "$backup_dir"
 backup_item "$HOME/.oh-my-zsh/custom/themes/agnoster_custom.zsh-theme" "$backup_dir"
 backup_item "$HOME/.config/nvim/init.lua" "$backup_dir"
 backup_item "$HOME/.tmux.conf" "$backup_dir"
-backup_item "$HOME/.bashrc" "$backup_dir"
 backup_item "$HOME/.zshrc" "$backup_dir"
 backup_item "/etc/keyd/default.conf" "$backup_dir"
 backup_item "$HOME/.vimrc" "$backup_dir"

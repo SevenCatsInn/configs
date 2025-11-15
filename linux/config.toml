@@ -13,9 +13,6 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
-[keys.select.g]
-c = "toggle_comments"
-
 [keys.normal.space]
 # Hunk manipulation
 h = { r = ":reset-diff-change", p = "goto_prev_change", n = "goto_next_change" }
