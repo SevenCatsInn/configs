@@ -6,7 +6,7 @@ soft-wrap.enable = true
 auto-pairs = false
 lsp.auto-signature-help = false
 end-of-line-diagnostics = 'hint'
-default-yank-register = "+" # Yank to sys clipboard
+default-yank-register = "+" 
  
 [editor.cursor-shape]
 insert = "bar"
