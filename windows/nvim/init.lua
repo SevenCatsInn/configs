@@ -7,6 +7,7 @@ require("paq")({
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"nvim-treesitter/nvim-treesitter",
+	"folke/todo-comments.nvim",
 
 	-- Git
 	"tpope/vim-fugitive",
@@ -57,10 +58,10 @@ vim.cmd.colorscheme("github_dark")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
 	-- extra_groups = { 'NormalFloat' },
-})
--- Semantic tokens for parameters and docstrings
-vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#eab35b', italic=true })
-vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true })
+}) 
+-- Semantic tokens custom colors
+vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#eab35b', italic=true }) -- Parameters
+vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
 
 -- *** KEYMAPS
 vim.g.mapleader = " "
@@ -117,10 +118,13 @@ require("mason-lspconfig").setup({automatic_enable = true})
 require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
+		-- native tokens
 		additional_vim_regex_highlighting = false,
 	},
 	ensure_installed = { "python", "lua", "vim", "cpp" },
 })
+-- Tresitter does not support TODOs natively
+require("todo-comments").setup({ signs = false }) 
 
 -- Blink (autocomplete)
 require("blink.cmp").setup({
