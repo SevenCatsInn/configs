@@ -52,12 +52,15 @@ vim.opt.laststatus = 3       -- Lines between windows
 vim.opt.signcolumn = "yes:2" -- Left gutter size
 vim.g.have_nerd_font = true
 
--- Colorscheme
+-- *** Colorscheme
 vim.cmd.colorscheme("github_dark")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
 	-- extra_groups = { 'NormalFloat' },
 })
+-- Semantic tokens for parameters and docstrings
+vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#eab35b', italic=true })
+vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true })
 
 -- *** KEYMAPS
 vim.g.mapleader = " "
@@ -111,7 +114,13 @@ vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- cut f-string i
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
 require("mason-lspconfig").setup({automatic_enable = true})
-require("nvim-treesitter").setup()
+require("nvim-treesitter.configs").setup({
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+	ensure_installed = { "python", "lua", "vim", "cpp" },
+})
 
 -- Blink (autocomplete)
 require("blink.cmp").setup({
