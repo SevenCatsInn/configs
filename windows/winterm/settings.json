@@ -18,6 +18,15 @@
         {
             "command": 
             {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": 
+            {
                 "action": "moveFocus",
                 "direction": "down"
             },
@@ -26,15 +35,6 @@
         {
             "command": "find",
             "id": "User.find"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "id": "User.splitPane.A6751878"
         },
         {
             "command": "closePane",
@@ -66,6 +66,10 @@
             "id": "User.moveFocus.2A0DA8E0"
         },
         {
+            "command": "scrollUpPage",
+            "id": "User.scrollUpPage"
+        },
+        {
             "command": 
             {
                 "action": "moveFocus",
@@ -74,8 +78,12 @@
             "id": "User.moveFocus.87C324ED"
         },
         {
-            "command": "scrollUpPage",
-            "id": "User.scrollUpPage"
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "id": "User.moveFocus.6CD791B"
         },
         {
             "command": 
@@ -85,14 +93,6 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.10B260D2"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "id": "User.moveFocus.6CD791B"
         }
     ],
     "centerOnLaunch": true,
@@ -107,15 +107,7 @@
     [
         {
             "id": null,
-            "keys": "alt+right"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+h"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+w"
+            "keys": "ctrl+v"
         },
         {
             "id": "User.find",
@@ -123,15 +115,23 @@
         },
         {
             "id": null,
-            "keys": "ctrl+v"
+            "keys": "ctrl+shift+w"
         },
         {
             "id": null,
-            "keys": "alt+down"
+            "keys": "ctrl+h"
+        },
+        {
+            "id": null,
+            "keys": "alt+right"
         },
         {
             "id": null,
             "keys": "alt+shift+plus"
+        },
+        {
+            "id": null,
+            "keys": "alt+down"
         },
         {
             "id": null,
@@ -243,7 +243,7 @@
                 "weight": "normal"
             },
             "intenseTextStyle": "bold",
-            "opacity": 82,
+            "opacity": 87,
             "padding": "0",
             "scrollbarState": "hidden",
             "useAcrylic": true
@@ -374,5 +374,5 @@
     ],
     "themes": [],
     "useAcrylicInTabRow": true,
-    "windowingBehavior": "useAnyExisting"
+    "windowingBehavior": "useNew"
 }

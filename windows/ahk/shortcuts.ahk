@@ -140,3 +140,9 @@ Esc & Capslock::Capslock
 
 ; Alt+\ = Play/Pause
 >^\:: Send "{Media_Play_Pause}"
+
+; Launch Windows Terminal with Right Alt + Enter
+>!Enter::
+{
+    Run "wt.exe"
+}

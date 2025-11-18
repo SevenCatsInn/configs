@@ -5,7 +5,7 @@
   "cross_monitor_move_behaviour": "Insert",
   "stackbar": {"height": 10},
   "animation":{
-	  "enabled": true,
+	  "enabled": false,
 	  "duration": 200,
 	  "style": "EaseInOutSine"
   },
