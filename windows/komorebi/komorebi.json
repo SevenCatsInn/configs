@@ -6,14 +6,14 @@
   "stackbar": {"height": 10},
   "animation":{
 	  "enabled": false,
-	  "duration": 200,
+	  "duration": 50,
 	  "style": "EaseInOutSine"
   },
   "default_workspace_padding": 2,
   "default_container_padding": 2,
   "mouse_follows_focus": false,
   "border": false,
-  "resize_delta": 500,
+  "resize_delta": 400,
   "transparency": true,
   "transparency_alpha": 210,
 
