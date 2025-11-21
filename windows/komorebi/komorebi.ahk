@@ -38,6 +38,7 @@ Komorebic(cmd) {
 >!+_::Komorebic("resize-axis vertical decrease")
 
 ; Manipulate windows
+>!q::Komorebic("close")
 >!t::Komorebic("toggle-float")
 >!f::Komorebic("toggle-monocle")
 
@@ -70,3 +71,7 @@ Komorebic(cmd) {
 >!+7::Komorebic("move-to-workspace 6")
 >!+8::Komorebic("move-to-workspace 7")
 >!+0::Komorebic("move-to-workspace 9")
+
+; Application launchers
+>!e::Run "explorer.exe"
+>!n::Run "firefox.exe -new-window"

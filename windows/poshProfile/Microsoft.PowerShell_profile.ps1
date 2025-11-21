@@ -1,5 +1,5 @@
 # & ([ScriptBlock]::Create((oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/agnoster.omp.json" --print) -join "`n"))
-& ([ScriptBlock]::Create((oh-my-posh init pwsh --config "C:\Users\fvaccari\OneDrive - Delft University of Technology\BackupConfigs\hotstick\hotstick.minimal.omp.json" --print) -join "`n"))
+& ([ScriptBlock]::Create((oh-my-posh init pwsh --config "C:\Users\fvaccari\OneDrive - Delft University of Technology\configs\windows\hotstick\hotstick.minimal.omp.json" --print) -join "`n"))
 
 # Auto complete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
@@ -70,12 +70,5 @@ function Watch([string] $command, [int] $period) {
     }
 }
 
-# Add VS Code to PATH and
-# Add an alias that makes vsc open vscode maximized
-$env:Path += ";C:\Users\$env:USERNAME\scoop\apps\vscode\current\bin\"
 # Make a nvim-config variable
 $NVIM += "C:\Users\$env:USERNAME\AppData\Local\nvim\init.lua"
-
-# Aliases
-Set-Alias vsc "code"
-
