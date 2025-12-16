@@ -195,10 +195,10 @@ for_window [title="Figure.*"] floating enable
     bindsym $mod+backslash scratchpad show
 
     # Resize windows directly
-    bindsym $mod+minus resize shrink width 40px
-    bindsym $mod+equal resize grow width 40px
-    bindsym $mod+Shift+minus resize shrink height 40px
-    bindsym $mod+Shift+equal resize grow height 40px
+    bindsym $mod+p resize shrink width 40px
+    bindsym $mod+u resize grow width 40px
+    bindsym $mod+i resize shrink height 40px
+    bindsym $mod+o resize grow height 40px
 
 # Resize Mode:
 # bindsym $mod+r mode "resize"
