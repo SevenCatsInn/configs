@@ -60,7 +60,7 @@ require("transparent").setup({
 	-- extra_groups = { 'NormalFloat' },
 }) 
 -- Semantic tokens custom colors
-vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#eab35b', italic=true }) -- Parameters
+vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
 vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
 
 -- *** KEYMAPS
@@ -124,7 +124,13 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = { "python", "lua", "vim", "cpp" },
 })
 -- Tresitter does not support TODOs natively
-require("todo-comments").setup({ signs = false }) 
+require("todo-comments").setup({ 
+	signs = false,
+	highlight = {
+		multiline = false,
+		after = "",
+	}
+}) 
 
 -- Blink (autocomplete)
 require("blink.cmp").setup({

@@ -57,6 +57,7 @@ function l { # Print the last modified last
 }
 
 function rmrf ([string] $path){ rm -Force -Recurse $path}
+function ff ([string] $file_name){ Get-ChildItem . -Recurse -Name $file_name}
 
 function pdb ([string] $path){ uv run -m pdb $path}
 function ipdb ([string] $path){ ipython --colors linux -m ipdb $path}
