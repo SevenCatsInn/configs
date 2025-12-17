@@ -141,6 +141,8 @@ Esc & Capslock::Capslock
 ; Alt+\ = Play/Pause
 >^\:: Send "{Media_Play_Pause}"
 
+>!n::Run "firefox.exe -new-window"
+
 ; Launch Windows Terminal with Right Alt + Enter
 >!Enter::
 {
