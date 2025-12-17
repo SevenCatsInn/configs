@@ -7,10 +7,10 @@ $config = @{
         @{ Source = "$HOME\AppData\Roaming\helix"; Dest = "helix"; Files = @("languages.toml", "config.toml") }
         @{ Source = $PROFILE; Dest = "poshProfile" }
         @{ Source = $MyInvocation.MyCommand.Path; Dest = "backupScript" }
+        @{ Source = "$HOME\.glzr\glazewm\config.yaml"; Dest = "glazewm";  }
     )
     Folders = @(
         @{ Source = "$env:LOCALAPPDATA\nvim"; Dest = "nvim" }
-        @{ Source = "$HOME\.komorebi"; Dest = "komorebi" }
         @{ Source = "$HOME\ahk"; Dest = "ahk" }
     )
 }
