@@ -94,7 +94,7 @@ window_effects:
       style: 'square'
     transparency:
       enabled: true
-      opacity: '95%'
+      opacity: '97%'
 
 window_behavior:
   # New windows are created in this state whenever possible.
@@ -140,6 +140,8 @@ window_rules:
 
       # Python figures
       - window_title: { regex: 'Figure.*' }
+      # Clock
+      - window_title: { regex: 'Clock.*' }
 
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }

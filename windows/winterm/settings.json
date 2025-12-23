@@ -86,7 +86,7 @@
             "id": "User.moveFocus.6CD791B"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "down",

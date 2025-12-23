@@ -59,6 +59,7 @@ function l { # Print the last modified last
 function rmrf ([string] $path){ rm -Force -Recurse $path}
 function ff ([string] $file_name){ Get-ChildItem . -Recurse -Name $file_name}
 
+function nw ([string] $path = ".") {wt -w new -d (Join-Path $PWD $path)}
 function pdb ([string] $path){ uv run -m pdb $path}
 function ipdb ([string] $path){ ipython --colors linux -m ipdb $path}
 function ipp { ipython --colors linux --no-confirm-exit --no-banner $args}
