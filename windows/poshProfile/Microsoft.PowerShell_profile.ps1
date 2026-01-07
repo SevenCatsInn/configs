@@ -64,7 +64,7 @@ function pdb ([string] $path){ uv run -m pdb $path}
 function ipdb ([string] $path){ ipython --colors linux -m ipdb $path}
 function ipp { ipython --colors linux --no-confirm-exit --no-banner $args}
 
-function Watch([string] $command, [int] $period) {
+function watch([string] $command, [int] $period) {
     while ($true) {
         Clear-Host
         Invoke-Expression $command

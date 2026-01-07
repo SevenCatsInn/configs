@@ -81,7 +81,7 @@ vim.diagnostic.config({ virtual_text = true }) -- enable virt text diagnostics
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
+vim.keymap.set("n", "gR", ":Telescope lsp_references<cr>")
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>mp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>mn", vim.diagnostic.goto_next)
@@ -115,7 +115,7 @@ vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- cut f-string i
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
 require("mason-lspconfig").setup({automatic_enable = true})
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter").setup({
 	highlight = {
 		enable = true,
 		-- native tokens
