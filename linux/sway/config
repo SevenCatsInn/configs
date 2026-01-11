@@ -63,7 +63,7 @@ input type:touchpad {
 }
 
 # Window aesthetics
-default_border pixel 2
+default_border pixel 1
 gaps inner 2
 gaps outer 2
 client.focused #ED1258 #ED1258 #ffffff #ED1258 #ED1258
@@ -169,6 +169,7 @@ for_window [title="Figure.*"] floating enable
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
+    bindsym $mod+tkfloating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle

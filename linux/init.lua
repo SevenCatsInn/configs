@@ -175,7 +175,7 @@ function AerialToggleFocus()
 	local aerial = require("aerial")
 	aerial.setup()
 	if not aerial.is_open() then
-		aerial.toggle()
+		aerial.toggle({direction='right'})
 	else
 		aerial.focus()
 	end
