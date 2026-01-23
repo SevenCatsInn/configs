@@ -6,7 +6,8 @@ require("paq")({
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
-	"nvim-treesitter/nvim-treesitter",
+	-- The rewrite has issues on windows, use master
+	{"nvim-treesitter/nvim-treesitter", branch = "master"},
 	"folke/todo-comments.nvim",
 
 	-- Git
@@ -61,6 +62,7 @@ require("transparent").setup({
 }) 
 -- Semantic tokens custom colors
 vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
+vim.api.nvim_set_hl(0, '@variable.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
 vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
 
 -- *** KEYMAPS
@@ -115,10 +117,9 @@ vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- cut f-string i
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
 require("mason-lspconfig").setup({automatic_enable = true})
-require("nvim-treesitter").setup({
+require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
-		-- native tokens
 		additional_vim_regex_highlighting = false,
 	},
 	ensure_installed = { "python", "lua", "vim", "cpp" },
