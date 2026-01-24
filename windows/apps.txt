@@ -6,6 +6,7 @@
 - Neovim
 - Windows terminal
 - Oh my posh
+- GlazeWM
 
 Extensions
 - SponsorBlock

@@ -94,6 +94,7 @@ for_window [title="Figure.*"] floating enable
     bindsym Mod4+3 exec $term
     bindsym Mod4+t exec $term
     bindsym Mod4+f exec nautilus ~
+    bindsym Mod4+1 exec nautilus ~
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -169,7 +170,7 @@ for_window [title="Figure.*"] floating enable
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
-    bindsym $mod+tkfloating toggle
+    bindsym $mod+t floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
