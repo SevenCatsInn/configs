@@ -60,9 +60,8 @@ require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
 	-- extra_groups = { 'NormalFloat' },
 }) 
--- Semantic tokens custom colors
+-- Semantic tokens custom colors for python
 vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
-vim.api.nvim_set_hl(0, '@variable.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
 vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
 
 -- *** KEYMAPS
@@ -72,7 +71,7 @@ vim.keymap.set("n", "<leader>f", ":Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr><esc>")
 vim.keymap.set("n", "<leader>g", ":Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>w", ":Telescope grep_string<cr>") --search word under cursor
-vim.keymap.set("n", "<leader>s", ":Telescope aerial<cr>")
+vim.keymap.set("n", "<leader>s", ":Telescope aerial<cr>") -- search symbols
 vim.keymap.set("n", "<leader>'", ":Telescope resume<cr>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<cr>")
 vim.keymap.set('n', '<leader>d', ":Telescope diagnostics<cr>")
@@ -87,7 +86,7 @@ vim.keymap.set("n", "gR", ":Telescope lsp_references<cr>")
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>mp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>mn", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<leader>mm", vim.diagnostic.setloclist)
+vim.keymap.set("n", "<leader>mm", vim.diagnostic.setloclist) -- open diagnostics pane
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- format on save
 
 -- Gitsigns, hunk navigation
@@ -104,19 +103,21 @@ vim.keymap.set("n", "yA", "ggyG<C-o>") -- yank all lines
 vim.keymap.set("i", "jk", "<esc>:w<cr>l") -- insert mode save by pressing jk
 
 -- Terminal
-vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>") -- exit terminal insert mode w/ esc
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>") -- exit terminal insert mode w/ 2*esc
 vim.keymap.set("t", "<C-l>",  "<C-l>")
 
 -- Python string utils
-vim.keymap.set("n", "<leader>id", "o\"\"\"<esc>yypO") -- insert docstring
-vim.keymap.set("n", "<leader>cs", "i\'\'<esc>ha<cr><esc>ll") -- cut string in two lines
-vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- cut f-string in two lines
+vim.keymap.set("n", "<leader>id", "o\"\"\"<esc>yypO") -- [i]nsert [d]ocstring
+vim.keymap.set("n", "<leader>cs", "i\'\'<esc>ha<cr><esc>ll") -- [c]ut [s]tring in two lines
+vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- [c]ut [f]-string in two lines
 
 
 -- *** SETUPS
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
-require("mason-lspconfig").setup({automatic_enable = true})
+require("mason-lspconfig").setup({automatic_enable = true}) -- Autoenable LS from mason
+
+-- This is using master branch treesitter
 require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
@@ -188,6 +189,6 @@ function AerialToggleFocus()
 	end
 end
 
--- Assign keymaps to the functions above defined
+-- Assign keymaps to the functions above
 vim.keymap.set("n", "<leader>o", AerialToggleFocus)
 vim.keymap.set("n", "<leader>mt", DiagonsticsToggle)
