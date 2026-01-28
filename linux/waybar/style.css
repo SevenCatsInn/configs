@@ -27,12 +27,11 @@ window#waybar {
 }
 
 #mode,
-#window,
-#clock{
+#window {
 	color: #000000;
 	padding: 0 15px;
 }
-
+#clock,
 #network,
 #pulseaudio, 
 #battery {

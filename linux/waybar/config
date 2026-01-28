@@ -22,16 +22,16 @@
     },
 
     "battery": {
-        "interval": 5,
-        "format": "pow {capacity}%",
-        "format-charging": "pow {capacity}%+",
-        "format-plugged": "pow {capacity}%+"
+        "interval": 10,
+        "format": "{capacity}%",
+        "format-charging": "{capacity}%+",
+        "format-plugged": "{capacity}%+"
     },
 
     "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": " eth",
-        "format-disconnected": " disconnected"
+        "format-wifi": "{essid}",
+        "format-ethernet": "eth",
+        "format-disconnected": "disconnected"
     },
 
     "pulseaudio": {
