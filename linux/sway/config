@@ -21,7 +21,7 @@ set $menu XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/sha
 include /etc/sway/config-vars.d/*
 
 # Wallpaper
-output * bg /home/francesco/Pictures/Wallpapers/macos-big-sur.jpg fill
+output * bg /home/francesco/Pictures/Wallpapers/purple_abstract.jpg fill
 
 # Example configuration
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
