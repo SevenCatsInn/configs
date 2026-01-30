@@ -66,7 +66,7 @@ input type:touchpad {
 default_border pixel 1
 gaps inner 2
 gaps outer 2
-client.focused #ED1258 #ED1258 #ffffff #ED1258 #ED1258
+client.focused #000000 #000000 #ffffff #f7768e #f7768e
 
 # Opacity rules (0.0 = transparent, 1.0 = opaque)
 # Focused windows: 100% opaque, Unfocused windows: 90% opaque
