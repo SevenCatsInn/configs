@@ -13,14 +13,14 @@ default_dim_inactive 0.2
 set $mod Mod1
 
 # Font
-font pango:JetBrainsMono Nerd FonT 12
+font pango:JetBrainsMono Nerd Font 12
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
+# Terminal (the -1 makes startup of kitty instances after the first much faster)
+set $term kitty -1 
 # Your preferred application launcher, with the source folder for binaries
 set $menu XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$HOME/.local/share fuzzel
 
@@ -72,6 +72,8 @@ input type:touchpad {
 default_border pixel 0
 gaps inner 2
 gaps outer 2
+# The first two are the title bg when stacked and its border
+# third is the text, last two are the actual borders
 client.focused #000000 #000000 #ffffff #f7768e #f7768e
 
 # Opacity rules (0.0 = transparent, 1.0 = opaque)
@@ -180,8 +182,6 @@ for_window [title="Figure.*"] floating enable
     # Move focus to the parent container
     bindsym $mod+a focus parent
     
-    # Toggle waybar
-    bindsym $mod+Shift+f exec killall -SIGUSR1 waybar
  
 # Scratchpad
     # Sway has a "scratchpad", which is a bag of holding for windows.
@@ -236,5 +236,7 @@ for_window [title="Figure.*"] floating enable
 bar {
     swaybar_command waybar
 }
+# Toggle waybar
+bindsym $mod+Shift+f exec killall -SIGUSR1 waybar
 
 include /etc/sway/config.d/*
