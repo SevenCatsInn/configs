@@ -1,3 +1,9 @@
+# ---------------------- SWAYFX ONLY
+blur enable
+corner_radius 15
+default_dim_inactive 0.2
+# ---------------------- Vanilla sway below
+
 # Default config for sway
 # Copy this to ~/.config/sway/config and edit it to your liking.
 # Read `man 5 sway` for a complete reference.
@@ -63,7 +69,7 @@ input type:touchpad {
 }
 
 # Window aesthetics
-default_border pixel 1
+default_border pixel 0
 gaps inner 2
 gaps outer 2
 client.focused #000000 #000000 #ffffff #f7768e #f7768e
