@@ -140,8 +140,6 @@ window_rules:
 
       # Python figures
       - window_title: { regex: 'Figure.*' }
-      # Clock
-      - window_title: { regex: 'Clock.*' }
 
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
@@ -160,6 +158,15 @@ window_rules:
         window_class: { not_regex: 'OpusApp' }
       - window_process: { equals: 'POWERPNT' }
         window_class: { not_regex: 'PPTFrameClass' }
+
+  # These are spawned as floating instead of tiling
+  - commands: ['toggle-floating']
+    match:
+      # Clock
+      - window_title: { regex: 'Clock.*' }
+      # Messaging apps float by default
+      - window_title: { regex: 'Signal.*' }
+      - window_title: { regex: '.*Teams' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.

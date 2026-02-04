@@ -115,6 +115,7 @@
 
 
 
+
 ; Remap Capslock to Ctrl:
 Capslock::Ctrl  
 
@@ -129,6 +130,17 @@ Capslock Up::{
 ; in that case trigger the actual capslock
 ~Esc::Send "{Esc}"
 Esc & Capslock::Capslock
+
+; Right Shift acts as forward slash when tapped alone
+RShift::
+{
+	Send "/"
+}
+
+RShift & Enter:: 
+{
+	Send "+{Enter}"
+}
 
 
 ; Media Controls
@@ -147,4 +159,41 @@ Esc & Capslock::Capslock
 >!Enter::
 {
     Run "wt.exe"
+}
+
+
+; - - - - - - - - - - - - - - - - - - - - TEMPORARY 
+; -- MY FUCKING LAPTOP KEYBOARD DOES NOT WORK
+
+
+; Map Alt+t to 5 and Alt+y to 6 (with shift for % and ^)
+<!t::
+{
+    Send "5"
+}
+
++<!t::
+{
+    Send "%"
+}
+
+<!y::
+{
+    Send "6"
+}
+
++<!y::
+{
+    Send "^"
+}
+
+; Map Alt+; to single quote and Alt+Shift+; to double quote
+<!;::
+{
+    Send "'"
+}
+
++<!;::
+{
+    Send "`""
 }

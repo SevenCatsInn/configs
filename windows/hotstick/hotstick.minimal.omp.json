@@ -11,7 +11,7 @@
           "type": "root"
         },
         {
-          "background": "lightBlue",
+          "background": "red",
           "foreground": "black",
           "style": "plain",
           "leading_diamond": "\ue0b6",
