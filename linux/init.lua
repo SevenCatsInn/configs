@@ -57,7 +57,7 @@ vim.g.have_nerd_font = true
 vim.cmd.colorscheme("github_dark")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
-	-- extra_groups = { 'NormalFloat' },
+	extra_groups = { 'TelescopeNormal', 'TelescopePromptBorder', 'TelescopeBorder'},
 }) 
 -- Semantic tokens custom colors
 vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#eab35b', italic=true }) -- Parameters
