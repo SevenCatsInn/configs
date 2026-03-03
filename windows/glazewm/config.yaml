@@ -137,6 +137,8 @@ window_rules:
     match:
       # Ignores any Zebar windows.
       - window_process: { equals: 'zebar' }
+      - window_title: { regex: 'Inkscape.*' }
+      - window_title: { regex: 'Meld.*' }
 
       # Python figures
       - window_title: { regex: 'Figure.*' }
@@ -166,7 +168,10 @@ window_rules:
       - window_title: { regex: 'Clock.*' }
       # Messaging apps float by default
       - window_title: { regex: 'Signal.*' }
+      - window_title: { regex: 'Telegram.*' }
       - window_title: { regex: '.*Teams' }
+      # Python figures
+      # - window_title: { regex: 'Figure.*' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.

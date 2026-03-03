@@ -231,6 +231,7 @@
         {
             "adjustIndistinguishableColors": "always",
             "antialiasingMode": "cleartype",
+            "bellStyle": "none",
             "colorScheme": "Tokyo Night",
             "cursorShape": "filledBox",
             "font": 
@@ -243,7 +244,7 @@
                 "weight": "normal"
             },
             "intenseTextStyle": "bold",
-            "opacity": 87,
+            "opacity": 90,
             "padding": "0",
             "scrollbarState": "hidden",
             "useAcrylic": true
@@ -251,12 +252,14 @@
         "list": 
         [
             {
+                "colorScheme": "Tokyo Night",
                 "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -nologo",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell7",
+                "opacity": 75,
                 "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "C:\\Users\\fvaccari"
+                "startingDirectory": "C:\\Users\\fvaccari\\"
             },
             {
                 "cursorShape": "filledBox",

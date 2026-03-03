@@ -60,9 +60,10 @@ function rmrf ([string] $path){ rm -Force -Recurse $path}
 function ff ([string] $file_name){ Get-ChildItem . -Recurse -Name $file_name}
 
 function nw ([string] $path = ".") {wt -w new -d (Join-Path $PWD $path)}
+function nwl ([string] $path = ".") {wt -w new -p "Arch" -d (Join-Path $PWD $path)}
 function pdb ([string] $path){ uv run -m pdb $path}
 function ipdb ([string] $path){ ipython --colors linux -m ipdb $path}
-function ipp { ipython --colors linux --no-confirm-exit --no-banner $args}
+function ipp ([string] $path){ ipython --colors linux --no-confirm-exit --no-banner $path}
 
 function watch([string] $command, [int] $period) {
     while ($true) {
@@ -72,10 +73,10 @@ function watch([string] $command, [int] $period) {
     }
 }
 
-# Make a nvim-config variable
-$NVIM += "C:\Users\$env:USERNAME\AppData\Local\nvim\init.lua"
+# Make a nvim config variable
+$MYVIMRC += "C:\Users\$env:USERNAME\AppData\Local\nvim\init.lua"
 
-# *** Enable powershellrun
+# *** Enable powershellrun (fuzzy launcher)
 Enable-PSRunEntry -Category All
 Set-PSRunPSReadLineKeyHandler -InvokePsRunChord 'alt+d'
 # Set to run on neovim
