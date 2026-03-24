@@ -145,18 +145,18 @@ RShift & Enter::
 
 ; Media Controls
 ; Alt+[ = Previous Track
->^[:: Send "{Media_Prev}"
+<^[:: Send "{Media_Prev}"
 
 ; Alt+] = Next Track
->^]:: Send "{Media_Next}"
+<^]:: Send "{Media_Next}"
 
 ; Alt+\ = Play/Pause
->^\:: Send "{Media_Play_Pause}"
+<^\:: Send "{Media_Play_Pause}"
 
->!n::Run "firefox.exe -new-window"
+<!n::Run "firefox.exe -new-window"
 
 ; Launch Windows Terminal with Right Alt + Enter
->!Enter::
+<!Enter::
 {
     Run "wt.exe"
 }
