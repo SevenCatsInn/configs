@@ -244,7 +244,7 @@
                 "weight": "normal"
             },
             "intenseTextStyle": "bold",
-            "opacity": 90,
+            "opacity": 69,
             "padding": "0",
             "scrollbarState": "hidden",
             "useAcrylic": true
@@ -252,17 +252,14 @@
         "list": 
         [
             {
-                "colorScheme": "Tokyo Night",
                 "commandline": "\"C:\\Users\\fvaccari\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe\" -nologo",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell7",
-                "opacity": 75,
                 "source": "Windows.Terminal.PowershellCore",
                 "startingDirectory": "C:\\Users\\fvaccari\\"
             },
             {
-                "cursorShape": "filledBox",
                 "guid": "{50874a2e-c17f-56b4-a302-e75b6a7a2262}",
                 "hidden": false,
                 "name": "Arch",

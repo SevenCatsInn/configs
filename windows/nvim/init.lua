@@ -62,7 +62,7 @@ require("transparent").setup({
 }) 
 -- Semantic tokens custom colors for python
 vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
-vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
+vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
 
 -- *** KEYMAPS
 vim.g.mapleader = " "

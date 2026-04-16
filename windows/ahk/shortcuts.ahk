@@ -131,11 +131,6 @@ Capslock Up::{
 ~Esc::Send "{Esc}"
 Esc & Capslock::Capslock
 
-; Right Shift acts as forward slash when tapped alone
-RShift::
-{
-	Send "/"
-}
 
 RShift & Enter:: 
 {
@@ -145,26 +140,29 @@ RShift & Enter::
 
 ; Media Controls
 ; Alt+[ = Previous Track
-<^[:: Send "{Media_Prev}"
+>^[:: Send "{Media_Prev}"
 
 ; Alt+] = Next Track
-<^]:: Send "{Media_Next}"
+>^]:: Send "{Media_Next}"
 
 ; Alt+\ = Play/Pause
-<^\:: Send "{Media_Play_Pause}"
+>^\:: Send "{Media_Play_Pause}"
 
-<!n::Run "firefox.exe -new-window"
-
-; Launch Windows Terminal with Right Alt + Enter
-<!Enter::
-{
-    Run "wt.exe"
-}
-
+>!n::Run "firefox.exe -new-window"
 
 ; - - - - - - - - - - - - - - - - - - - - TEMPORARY 
 ; -- MY FUCKING LAPTOP KEYBOARD DOES NOT WORK
 
+; Right Shift acts as forward slash when tapped alone
+RShift::
+{
+	Send "/"
+}
+
+!RShift::
+{
+	Send "?"
+}
 
 ; Map Alt+t to 5 and Alt+y to 6 (with shift for % and ^)
 <!t::
