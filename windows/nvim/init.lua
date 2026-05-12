@@ -6,8 +6,9 @@ require("paq")({
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
-	-- The rewrite has issues on windows, use master
-	{"nvim-treesitter/nvim-treesitter", branch = "master"},
+	-- Treesitter rewrite has issues on windows, use master
+	-- use NVIM < 0.12.0 for compatibility !
+	{"nvim-treesitter/nvim-treesitter", branch='master'},
 	"folke/todo-comments.nvim",
 
 	-- Git
@@ -110,6 +111,10 @@ vim.keymap.set("t", "<C-l>",  "<C-l>")
 vim.keymap.set("n", "<leader>id", "o\"\"\"<esc>yypO") -- [i]nsert [d]ocstring
 vim.keymap.set("n", "<leader>cs", "i\'\'<esc>ha<cr><esc>ll") -- [c]ut [s]tring in two lines
 vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- [c]ut [f]-string in two lines
+
+-- vimtex
+vim.keymap.set("n", "<leader>vv", ":VimtexView<cr>")
+vim.keymap.set("n", "<leader>vc", ":VimtexCompile<cr>")
 
 
 -- *** SETUPS

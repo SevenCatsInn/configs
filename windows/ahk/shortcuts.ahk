@@ -195,3 +195,8 @@ RShift::
 {
     Send "`""
 }
+
+LShift & RShift::
+{
+    Send("{Blind}?")
+}
