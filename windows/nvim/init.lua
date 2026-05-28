@@ -25,7 +25,7 @@ require("paq")({
 	"nvim-lua/plenary.nvim", -- telescope dep
 
 	-- Autocompletion
-	"saghen/blink.cmp",
+	{"saghen/blink.cmp", branch='v1'},
 
 	-- Theming
 	"folke/tokyonight.nvim",
@@ -47,13 +47,16 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.shell = "pwsh"
 vim.opt.number = true
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.laststatus = 3       -- Lines between windows
 vim.opt.signcolumn = "yes:2" -- Left gutter size
 vim.g.have_nerd_font = true
+-- Windows specific shell options for pwsh
+vim.opt.shell = "pwsh.exe"
+vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
+vim.opt.shellxquote = ''
 
 -- *** Colorscheme
 vim.cmd.colorscheme("github_dark")
