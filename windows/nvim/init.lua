@@ -37,7 +37,7 @@ require("paq")({
 	"petertriho/nvim-scrollbar", -- Add scollbar
 	"nvim-tree/nvim-web-devicons", -- Icons
 	"stevearc/oil.nvim",        -- Explorer
-	"stevearc/aerial.nvim",     -- Outline
+	{"stevearc/aerial.nvim", branch='nvim-0.11'} -- Outline
 })
 
 
