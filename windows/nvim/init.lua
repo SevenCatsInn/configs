@@ -64,10 +64,10 @@ require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
 	extra_groups = {
 		'TelescopeNormal',
-		'TelescopeBorder'
+		'TelescopeBorder',
 		'TelescopePromptBorder',
-		'TelescopeResultsNormal',
-		},
+		'TelescopeResultsNormal', 
+	},
 }) 
 -- >> Custom highlights
 -- Parameters
@@ -76,6 +76,7 @@ vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=tr
 vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#151515', italic=true}) 
 -- Strings
 vim.api.nvim_set_hl(0, 'String', {italic=True}) 
+vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#ffffff', bg = '#222222'}) 
 
 -- *** KEYMAPS
 vim.g.mapleader = " "
