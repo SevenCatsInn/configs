@@ -280,6 +280,7 @@
     "schemes": 
     [
         {
+            "name": "Based Solarized Light",
             "background": "#FDF6E3",
             "black": "#002B36",
             "blue": "#268BD2",
@@ -295,7 +296,6 @@
             "cyan": "#2AA198",
             "foreground": "#657B83",
             "green": "#859900",
-            "name": "Based Solarized Light",
             "purple": "#D33682",
             "red": "#DC322F",
             "selectionBackground": "#9BAECC",
@@ -303,6 +303,7 @@
             "yellow": "#B58900"
         },
         {
+            "name": "Tokyo Night",
             "background": "#1A1B2C",
             "black": "#414868",
             "blue": "#7AA2F7",
@@ -318,7 +319,6 @@
             "cyan": "#7DCFFF",
             "foreground": "#A9B1DC",
             "green": "#73DACA",
-            "name": "Tokyo Night",
             "purple": "#BB9AF7",
             "red": "#F7768E",
             "selectionBackground": "#28344A",
@@ -326,6 +326,7 @@
             "yellow": "#E0AF68"
         },
         {
+            "name": "Tokyo Night Light",
             "background": "#D5D6DB",
             "black": "#0F0F14",
             "blue": "#34548A",
@@ -341,7 +342,6 @@
             "cyan": "#0F4B6E",
             "foreground": "#343B58",
             "green": "#33635C",
-            "name": "Tokyo Night Light",
             "purple": "#5A4A78",
             "red": "#8C4351",
             "selectionBackground": "#FFFFFF",
@@ -349,6 +349,7 @@
             "yellow": "#8F5815"
         },
         {
+            "name": "Tokyo Night Storm",
             "background": "#13151F",
             "black": "#4B5478",
             "blue": "#7AA2F7",
@@ -364,7 +365,6 @@
             "cyan": "#7DCFFF",
             "foreground": "#A9B1DC",
             "green": "#73DACA",
-            "name": "Tokyo Night Storm",
             "purple": "#BB9AF7",
             "red": "#F7768E",
             "selectionBackground": "#28344A",

@@ -28,8 +28,8 @@ require("paq")({
 	{"saghen/blink.cmp", branch='v1'},
 
 	-- Theming
-	"folke/tokyonight.nvim",
 	"projekt0n/github-nvim-theme",
+	"slugbyte/lackluster.nvim",
 	"xiyaowong/transparent.nvim",
 
 	-- Miscellaneous
@@ -59,14 +59,23 @@ vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -comman
 vim.opt.shellxquote = ''
 
 -- *** Colorscheme
-vim.cmd.colorscheme("github_dark")
+vim.cmd.colorscheme("lackluster-mint")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
-	extra_groups = { 'TelescopeNormal', 'TelescopePromptBorder', 'TelescopeBorder'},
+	extra_groups = {
+		'TelescopeNormal',
+		'TelescopeBorder'
+		'TelescopePromptBorder',
+		'TelescopeResultsNormal',
+		},
 }) 
--- Semantic tokens custom colors for python
-vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
-vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
+-- >> Custom highlights
+-- Parameters
+vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) 
+-- Docstrings
+vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#151515', italic=true}) 
+-- Strings
+vim.api.nvim_set_hl(0, 'String', {italic=True}) 
 
 -- *** KEYMAPS
 vim.g.mapleader = " "
