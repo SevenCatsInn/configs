@@ -1,7 +1,7 @@
 # ---------------------- SWAYFX ONLY
 blur enable
 corner_radius 15
-default_dim_inactive 0.3
+default_dim_inactive 0.2
 # ---------------------- Vanilla sway below
 
 # Default config for sway
@@ -57,9 +57,9 @@ output eDP-1 scale 1.15
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-# Enable natural scrolling for all pointer devices and touchpads
+# Disable natural scrolling for mice (use traditional scroll direction)
 input type:pointer {
-    natural_scroll enabled
+    natural_scroll disabled
 }
 
 input type:touchpad {
@@ -69,7 +69,7 @@ input type:touchpad {
 }
 
 # Window aesthetics
-default_border pixel 0
+default_border pixel 2
 gaps inner 2
 gaps outer 2
 # The first two are the title bg when stacked and its border

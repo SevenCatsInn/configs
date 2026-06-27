@@ -115,7 +115,7 @@ vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- [c]ut [f]-stri
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
 require("mason-lspconfig").setup({automatic_enable = true})
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter").setup({
 	highlight = {
 		enable = true,
 		-- native tokens

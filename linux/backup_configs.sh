@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define backup directory
-backup_dir="$HOME/syncthing/configs/linux"
+backup_dir="$HOME/configs/linux"
 
 # Create backup directory if it doesn't exist
 
