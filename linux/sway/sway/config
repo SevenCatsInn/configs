@@ -69,12 +69,12 @@ input type:touchpad {
 }
 
 # Window aesthetics
-default_border pixel 2
+default_border pixel 0
 gaps inner 2
 gaps outer 2
 # The first two are the title bg when stacked and its border
 # third is the text, last two are the actual borders
-client.focused #000000 #000000 #ffffff #f7768e #f7768e
+client.focused #000000 #000000 #ffffff #cc0055 #cc0055
 
 # Opacity rules (0.0 = transparent, 1.0 = opaque)
 # Focused windows: 100% opaque, Unfocused windows: 90% opaque
