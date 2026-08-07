@@ -182,7 +182,7 @@ RShift::
 
 +<!y::
 {
-    Send "^"
+    Send "{^}"
 }
 
 ; Map Alt+; to single quote and Alt+Shift+; to double quote

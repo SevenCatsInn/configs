@@ -53,13 +53,14 @@ vim.opt.ignorecase = true
 vim.opt.laststatus = 3       -- Lines between windows
 vim.opt.signcolumn = "yes:2" -- Left gutter size
 vim.g.have_nerd_font = true
+vim.g.vimtex_quickfix_mode = 0
 -- Windows specific shell options for pwsh
 vim.opt.shell = "pwsh.exe"
 vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
 vim.opt.shellxquote = ''
 
 -- *** Colorscheme
-vim.cmd.colorscheme("lackluster-mint")
+vim.cmd.colorscheme("github_dark_dimmed")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
 	extra_groups = {
@@ -75,8 +76,8 @@ vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=tr
 -- Docstrings
 vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#151515', italic=true}) 
 -- Strings
-vim.api.nvim_set_hl(0, 'String', {italic=True}) 
-vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#ffffff', bg = '#222222'}) 
+vim.api.nvim_set_hl(0, 'String', { fg='#000022', italic=true}) 
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#cc0055'}) 
 
 -- *** KEYMAPS
 vim.g.mapleader = " "

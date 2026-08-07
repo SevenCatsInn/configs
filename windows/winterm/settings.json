@@ -18,6 +18,15 @@
         {
             "command": 
             {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": 
+            {
                 "action": "moveFocus",
                 "direction": "down"
             },
@@ -26,15 +35,6 @@
         {
             "command": "find",
             "id": "User.find"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "id": "User.splitPane.A6751878"
         },
         {
             "command": "closePane",
@@ -66,6 +66,10 @@
             "id": "User.moveFocus.2A0DA8E0"
         },
         {
+            "command": "scrollUpPage",
+            "id": "User.scrollUpPage"
+        },
+        {
             "command": 
             {
                 "action": "moveFocus",
@@ -74,8 +78,12 @@
             "id": "User.moveFocus.87C324ED"
         },
         {
-            "command": "scrollUpPage",
-            "id": "User.scrollUpPage"
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "id": "User.moveFocus.6CD791B"
         },
         {
             "command": 
@@ -85,14 +93,6 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.10B260D2"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "id": "User.moveFocus.6CD791B"
         }
     ],
     "centerOnLaunch": true,
@@ -107,15 +107,7 @@
     [
         {
             "id": null,
-            "keys": "alt+right"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+h"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+w"
+            "keys": "ctrl+v"
         },
         {
             "id": "User.find",
@@ -123,19 +115,27 @@
         },
         {
             "id": null,
-            "keys": "ctrl+v"
+            "keys": "ctrl+shift+w"
         },
         {
-            "id": "User.scrollUpPage",
-            "keys": "ctrl+alt+k"
+            "id": null,
+            "keys": "ctrl+h"
+        },
+        {
+            "id": null,
+            "keys": "alt+right"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+plus"
         },
         {
             "id": null,
             "keys": "alt+down"
         },
         {
-            "id": null,
-            "keys": "alt+shift+plus"
+            "id": "User.scrollUpPage",
+            "keys": "ctrl+alt+k"
         },
         {
             "id": null,
@@ -280,7 +280,6 @@
     "schemes": 
     [
         {
-            "name": "Based Solarized Light",
             "background": "#FDF6E3",
             "black": "#002B36",
             "blue": "#268BD2",
@@ -296,6 +295,7 @@
             "cyan": "#2AA198",
             "foreground": "#657B83",
             "green": "#859900",
+            "name": "Based Solarized Light",
             "purple": "#D33682",
             "red": "#DC322F",
             "selectionBackground": "#9BAECC",
@@ -303,7 +303,6 @@
             "yellow": "#B58900"
         },
         {
-            "name": "Tokyo Night",
             "background": "#1A1B2C",
             "black": "#414868",
             "blue": "#7AA2F7",
@@ -315,18 +314,18 @@
             "brightRed": "#F7768E",
             "brightWhite": "#C0CAF5",
             "brightYellow": "#E0AF68",
-            "cursorColor": "#ED1258",
+            "cursorColor": "#CC0055",
             "cyan": "#7DCFFF",
             "foreground": "#A9B1DC",
             "green": "#73DACA",
+            "name": "Tokyo Night",
             "purple": "#BB9AF7",
             "red": "#F7768E",
             "selectionBackground": "#28344A",
             "white": "#C0CAF5",
-            "yellow": "#E0AF68"
+            "yellow": "#E1AF68"
         },
         {
-            "name": "Tokyo Night Light",
             "background": "#D5D6DB",
             "black": "#0F0F14",
             "blue": "#34548A",
@@ -342,6 +341,7 @@
             "cyan": "#0F4B6E",
             "foreground": "#343B58",
             "green": "#33635C",
+            "name": "Tokyo Night Light",
             "purple": "#5A4A78",
             "red": "#8C4351",
             "selectionBackground": "#FFFFFF",
@@ -349,7 +349,6 @@
             "yellow": "#8F5815"
         },
         {
-            "name": "Tokyo Night Storm",
             "background": "#13151F",
             "black": "#4B5478",
             "blue": "#7AA2F7",
@@ -365,6 +364,7 @@
             "cyan": "#7DCFFF",
             "foreground": "#A9B1DC",
             "green": "#73DACA",
+            "name": "Tokyo Night Storm",
             "purple": "#BB9AF7",
             "red": "#F7768E",
             "selectionBackground": "#28344A",

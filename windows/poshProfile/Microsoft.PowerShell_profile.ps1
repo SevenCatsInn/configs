@@ -75,12 +75,3 @@ function watch([string] $command, [int] $period) {
 
 # Make a nvim config variable
 $MYVIMRC += "C:\Users\$env:USERNAME\AppData\Local\nvim\init.lua"
-
-# *** Enable powershellrun (fuzzy launcher)
-Enable-PSRunEntry -Category All
-Set-PSRunPSReadLineKeyHandler -InvokePsRunChord 'alt+d'
-# Set to run on neovim
-Set-PSRunDefaultEditorScript -ScriptBlock {
-    param($path)
-    & nvim $path
-}
