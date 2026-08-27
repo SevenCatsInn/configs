@@ -6,21 +6,17 @@ require("paq")({
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
-	-- Treesitter rewrite has issues on windows, use master
-	-- use NVIM < 0.12.0 for compatibility !
-	{"nvim-treesitter/nvim-treesitter", branch='master'},
+	"nvim-treesitter/nvim-treesitter",
 	"folke/todo-comments.nvim",
 
 	-- Git
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim",
 
-	-- LaTeX
-	"lervag/vimtex",
+	-- LaTeX 
+	"lervag/vimtex", 
 
 	-- Search tools
-	"junegunn/fzf",
-	"junegunn/fzf.vim",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim", -- telescope dep
 
@@ -37,7 +33,7 @@ require("paq")({
 	"petertriho/nvim-scrollbar", -- Add scollbar
 	"nvim-tree/nvim-web-devicons", -- Icons
 	"stevearc/oil.nvim",        -- Explorer
-	{"stevearc/aerial.nvim", branch='nvim-0.11'} -- Outline
+	"stevearc/aerial.nvim", -- Outline
 })
 
 
@@ -137,7 +133,7 @@ require("mason").setup() -- LSP & formatter package manager
 require("mason-lspconfig").setup({automatic_enable = true}) -- Autoenable LS from mason
 
 -- This is using master branch treesitter
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter").setup({
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,

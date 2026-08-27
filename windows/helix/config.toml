@@ -1,4 +1,4 @@
-theme = "github_dark_transparent"
+theme = "base16_transparent"
 
 [editor]
 line-number = "relative"
@@ -13,21 +13,13 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
-[keys.select.g]
-c = "toggle_comments"
-
 [keys.normal.space]
 # Hunk manipulation
-h = { r = ":reset-diff-change", p = "goto_prev_change", n = "goto_next_change" }
-# Stop messages
+h = { r = ":reset-diff-change"}
+# Stop LSP messages
 m = { d = ":lsp-stop", e = ":lsp-restart", n = "goto_next_diag", p = "goto_prev_diag"}
 
 [keys.normal]
-# For some reason I need to reassign these
-# otherwise C-i does not work (win terminal)
-C-o = "jump_backward"
-C-i = "jump_forward"
-
 # Some nice Helix stuff
 C-h = "select_prev_sibling"
 C-j = "shrink_selection"
@@ -40,7 +32,6 @@ C-l = "select_next_sibling"
 V = ["select_mode", "extend_to_line_bounds"] # Visual line
 "C-v" = "copy_selection_on_next_line" # Mimic visual block
 "C-r" = "redo"
-"A-;" = "repeat_last_motion"
 
 [keys.insert]
 "C-space" = "signature_help"
@@ -51,4 +42,3 @@ V = "extend_to_line_bounds"
 G = "extend_to_file_end"
 i = "select_textobject_inner"
 a = "select_textobject_around"
-"A-;" = "repeat_last_motion"

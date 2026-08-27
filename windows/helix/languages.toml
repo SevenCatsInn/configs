@@ -5,12 +5,14 @@
 
 [[language]]
 name = "python"
-file-types = ["py"]
-indent = { tab-width = 4, unit = " " }
-formatter = { command = "ruff", args = ["format", "-"] }
+language-servers = [ "ruff", "ty" ]
 auto-format = true
-language-servers = ["basedpyright"]
 
-[language-server.basedpyright]
-command = "basedpyright-langserver"
-args = ["--stdio"]
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
