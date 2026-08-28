@@ -1,7 +1,7 @@
 theme = "github_dark_dim_transparent"
 # Make a ./themes/github_dark_dim_transparent.toml file with
-# --
-# inherits = "github_dark_dimmed"
+# -- For a transparent bg
+# inherits = "<the theme you want>"
 # "ui.background" = { fg = "foreground" }
 # --
 
