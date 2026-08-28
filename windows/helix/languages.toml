@@ -2,14 +2,16 @@
 # from source to .config/helix/
 # hx --grammar fetch
 # hx --grammar build 
+use-grammars = { only = [ "python", "rust", "c", "cpp" ] }
 
 [[language]]
 name = "python"
-language-servers = [ "ruff", "ty" ]
 auto-format = true
+language-servers=["ruff", "ty"]
 
 [language-server.ruff]
 command = "ruff"
+code-actions-on-save = ["source.organizeImports", "source.fixAll"]
 args = ["server"]
 
 [language-server.ty]

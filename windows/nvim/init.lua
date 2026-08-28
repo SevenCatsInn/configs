@@ -50,12 +50,13 @@ vim.opt.laststatus = 3       -- Lines between windows
 vim.opt.signcolumn = "yes:2" -- Left gutter size
 vim.g.have_nerd_font = true
 vim.g.vimtex_quickfix_mode = 0
--- Windows specific shell options for pwsh
-vim.opt.shell = "pwsh.exe"
+-- Windows specific options 
+vim.env.cc = 'gcc' -- Use gcc for compiling treesitter 
+vim.opt.shell = "pwsh" -- Use powershell and related options
 vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
 vim.opt.shellxquote = ''
 
--- *** Colorscheme
+-- *** Theming
 vim.cmd.colorscheme("github_dark_dimmed")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
@@ -131,15 +132,13 @@ vim.keymap.set("n", "<leader>vc", ":VimtexCompile<cr>")
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
 require("mason-lspconfig").setup({automatic_enable = true}) -- Autoenable LS from mason
-
--- This is using master branch treesitter
-require("nvim-treesitter").setup({
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-	ensure_installed = { "python", "lua", "vim", "cpp" },
+local ts_langs = {"cpp", "python", "lua", "latex"} -- Choose TS languages
+require("nvim-treesitter").install(ts_langs) -- Ensure installed
+vim.api.nvim_create_autocmd("FileType", { 
+  pattern = ts_langs,
+  callback = function() vim.treesitter.start() end, -- Autostart treesitter 
 })
+
 -- Tresitter does not support TODOs natively
 require("todo-comments").setup({ 
 	signs = false,

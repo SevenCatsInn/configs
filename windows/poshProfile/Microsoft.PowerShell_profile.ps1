@@ -8,10 +8,6 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # Disable venv writing in shell prompt added separately by the theme
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
-# Set komorebi folder
-$Env:KOMOREBI_CONFIG_HOME = 'C:\Users\fvaccari\.komorebi\'
-
-
 
 function ll {Get-ChildItem | Format-Wide -Column 5 }
 function lll {Get-ChildItem | Sort-Object LastWriteTime}

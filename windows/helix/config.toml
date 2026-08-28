@@ -1,4 +1,10 @@
-theme = "base16_transparent"
+theme = "github_dark_dim_transparent"
+# Make a ./themes/github_dark_dim_transparent.toml file with
+# --
+# inherits = "github_dark_dimmed"
+# "ui.background" = { fg = "foreground" }
+# --
+
 
 [editor]
 line-number = "relative"
@@ -32,9 +38,14 @@ C-l = "select_next_sibling"
 V = ["select_mode", "extend_to_line_bounds"] # Visual line
 "C-v" = "copy_selection_on_next_line" # Mimic visual block
 "C-r" = "redo"
+M = "goto_window_center"
+H = "goto_window_top"
+L = "goto_window_bottom"
+"C-;" = "repeat_last_motion"
+
 
 [keys.insert]
-"C-space" = "signature_help"
+"C-s" = "signature_help"
 j = { k = ["normal_mode", ":write"] }
 
 [keys.select]
@@ -42,3 +53,4 @@ V = "extend_to_line_bounds"
 G = "extend_to_file_end"
 i = "select_textobject_inner"
 a = "select_textobject_around"
+"C-;" = "repeat_last_motion"
