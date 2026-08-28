@@ -2,7 +2,6 @@
 $config = @{
     Destination = "$HOME\OneDrive - Delft University of Technology\configs\windows"
     Files = @(
-        @{ Source = "$HOME\scoop\apps\vscode\current\data\user-data\User"; Dest = "vscode"; Files = @("settings.json", "keybindings.json") }
         @{ Source = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"; Dest = "winterm" }
         @{ Source = "$HOME\AppData\Roaming\helix"; Dest = "helix"; Files = @("languages.toml", "config.toml") }
         @{ Source = $PROFILE; Dest = "poshProfile" }
