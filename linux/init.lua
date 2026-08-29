@@ -17,17 +17,15 @@ require("paq")({
 	"lervag/vimtex",
 
 	-- Search tools
-	"junegunn/fzf",
-	"junegunn/fzf.vim",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim", -- telescope dep
 
 	-- Autocompletion
-	"saghen/blink.cmp",
+	{"saghen/blink.cmp", branch='v1'},
 
 	-- Theming
-	"folke/tokyonight.nvim",
 	"projekt0n/github-nvim-theme",
+	"slugbyte/lackluster.nvim",
 	"xiyaowong/transparent.nvim",
 
 	-- Miscellaneous
@@ -35,7 +33,7 @@ require("paq")({
 	"petertriho/nvim-scrollbar", -- Add scollbar
 	"nvim-tree/nvim-web-devicons", -- Icons
 	"stevearc/oil.nvim",        -- Explorer
-	"stevearc/aerial.nvim",     -- Outline
+	"stevearc/aerial.nvim", -- Outline
 })
 
 
@@ -45,23 +43,33 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.shell = "zsh"
 vim.opt.number = true
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.laststatus = 3       -- Lines between windows
 vim.opt.signcolumn = "yes:2" -- Left gutter size
 vim.g.have_nerd_font = true
+vim.opt.shell = "zsh"
 
--- *** Colorscheme
-vim.cmd.colorscheme("github_dark")
+-- *** Theming
+vim.cmd.colorscheme("github_dark_dimmed")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
-	extra_groups = { 'TelescopeNormal', 'TelescopePromptBorder', 'TelescopeBorder'},
+	extra_groups = {
+		'TelescopeNormal',
+		'TelescopeBorder',
+		'TelescopePromptBorder',
+		'TelescopeResultsNormal', 
+	},
 }) 
--- Semantic tokens custom colors for python
-vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) -- Parameters
-vim.api.nvim_set_hl(0, '@string.documentation.python', { fg = '#b5b4b3', italic=true }) -- Docstrings
+-- >> Custom highlights
+-- Parameters
+vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) 
+-- Docstrings
+vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#151515', italic=true}) 
+-- Strings
+vim.api.nvim_set_hl(0, 'String', { fg='#aaaacc', italic=true}) 
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#cc0055'}) 
 
 -- *** KEYMAPS
 vim.g.mapleader = " "
@@ -110,19 +118,22 @@ vim.keymap.set("n", "<leader>id", "o\"\"\"<esc>yypO") -- [i]nsert [d]ocstring
 vim.keymap.set("n", "<leader>cs", "i\'\'<esc>ha<cr><esc>ll") -- [c]ut [s]tring in two lines
 vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- [c]ut [f]-string in two lines
 
+-- vimtex
+vim.keymap.set("n", "<leader>vv", ":VimtexView<cr>")
+vim.keymap.set("n", "<leader>vc", ":VimtexCompile<cr>")
+
 
 -- *** SETUPS
 -- Mason, LSP, Tresitter
 require("mason").setup() -- LSP & formatter package manager
-require("mason-lspconfig").setup({automatic_enable = true})
-require("nvim-treesitter").setup({
-	highlight = {
-		enable = true,
-		-- native tokens
-		additional_vim_regex_highlighting = false,
-	},
-	ensure_installed = { "python", "lua", "vim", "cpp" },
+require("mason-lspconfig").setup({automatic_enable = true}) -- Autoenable LS from mason
+local ts_langs = {"cpp", "python", "lua", "latex"} -- Choose TS languages
+require("nvim-treesitter").install(ts_langs) -- Ensure installed
+vim.api.nvim_create_autocmd("FileType", { 
+  pattern = ts_langs,
+  callback = function() vim.treesitter.start() end, -- Autostart treesitter 
 })
+
 -- Tresitter does not support TODOs natively
 require("todo-comments").setup({ 
 	signs = false,

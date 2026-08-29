@@ -2,15 +2,19 @@
 # from source to .config/helix/
 # hx --grammar fetch
 # hx --grammar build 
+use-grammars = { only = [ "python", "rust", "c", "cpp" ] }
 
 [[language]]
 name = "python"
-file-types = ["py"]
-indent = { tab-width = 4, unit = " " }
-formatter = { command = "ruff", args = ["format", "-"] }
 auto-format = true
-language-servers = ["basedpyright"]
+language-servers=["ruff", "ty"]
 
-[language-server.basedpyright]
-command = "basedpyright-langserver"
-args = ["--stdio"]
+[language-server.ruff]
+command = "ruff"
+code-actions-on-save = ["source.organizeImports", "source.fixAll"]
+args = ["server"]
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
