@@ -91,14 +91,26 @@ vim.keymap.set('n', '<leader>d', ":Telescope diagnostics<cr>")
 vim.keymap.set('n', '<leader>t', ":Telescope<cr>")
 
 -- LSP
-vim.diagnostic.config({ virtual_text = true }) -- enable virt text diagnostics
+vim.diagnostic.config({
+	virtual_text = true,
+	jump = {
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({
+				bufnr = bufnr,
+				scope = 'cursor',
+				focus = false,
+			})
+		end,
+	},
+})
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
-vim.keymap.set("n", "<leader>mp", function() vim.diagnostic.jump({count= -1}) end)
-vim.keymap.set("n", "<leader>mn", function() vim.diagnostic.jump({count= 1}) end)
+
+vim.keymap.set("n", "<leader>mp", function() vim.diagnostic.jump({ count = -1 }) end)
+vim.keymap.set("n", "<leader>mn", function() vim.diagnostic.jump({ count = 1 }) end)
 vim.keymap.set("n", "<leader>mm", vim.diagnostic.setloclist) -- open diagnostics pane
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- format on save
 
