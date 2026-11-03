@@ -1,3 +1,4 @@
+# Gnome extensions
 - Alphabetical app grid
 - Appindicator and KStatusNotifierItem support
 - Bluetooth quick connect
@@ -7,3 +8,8 @@
 - Just perfection
 - Tiling shell
 - User themes
+
+# TUI interfaces
+- bluetui
+- wiremix
+- wlctl
