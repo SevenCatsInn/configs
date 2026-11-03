@@ -13,8 +13,8 @@ require("paq")({
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim",
 
-	-- LaTeX
-	"lervag/vimtex",
+	-- LaTeX 
+	"lervag/vimtex", 
 
 	-- Search tools
 	"nvim-telescope/telescope.nvim",
@@ -43,15 +43,21 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.wrap = false
 vim.opt.number = true
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.laststatus = 3       -- Lines between windows
 vim.opt.signcolumn = "yes:2" -- Left gutter size
 vim.g.have_nerd_font = true
-vim.opt.shell = "zsh"
+vim.g.vimtex_quickfix_mode = 0
+-- Windows specific options 
+vim.env.cc = 'gcc' -- Use gcc for compiling treesitter 
+vim.opt.shell = "pwsh" -- Use powershell and related options
+vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
+vim.opt.shellxquote = ''
 
--- *** Theming
+-- *** THEMING
 vim.cmd.colorscheme("github_dark_dimmed")
 require("transparent").setup({
 	exclude_groups = { 'StatusLine', 'StatusLineNC', 'Todo' },
@@ -62,14 +68,14 @@ require("transparent").setup({
 		'TelescopeResultsNormal', 
 	},
 }) 
--- >> Custom highlights
--- Parameters
+-- Custom highlights
+-- > Parameters
 vim.api.nvim_set_hl(0, '@lsp.type.parameter.python', { fg = '#e8bc76', italic=true }) 
--- Docstrings
-vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#151515', italic=true}) 
--- Strings
-vim.api.nvim_set_hl(0, 'String', { fg='#aaaacc', italic=true}) 
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#cc0055'}) 
+-- > Docstrings
+vim.api.nvim_set_hl(0, '@lsp.mod.documentation.python', { fg = '#999999', italic=true}) 
+-- > Strings
+vim.api.nvim_set_hl(0, 'String', { fg='#669999', italic=true}) 
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#550055'}) 
 
 -- *** KEYMAPS
 vim.g.mapleader = " "
@@ -85,14 +91,26 @@ vim.keymap.set('n', '<leader>d', ":Telescope diagnostics<cr>")
 vim.keymap.set('n', '<leader>t', ":Telescope<cr>")
 
 -- LSP
-vim.diagnostic.config({ virtual_text = true }) -- enable virt text diagnostics
+vim.diagnostic.config({
+	virtual_text = true,
+	jump = {
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({
+				bufnr = bufnr,
+				scope = 'cursor',
+				focus = false,
+			})
+		end,
+	},
+})
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-vim.keymap.set("n", "gR", ":Telescope lsp_references<cr>")
+vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover)
-vim.keymap.set("n", "<leader>mp", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "<leader>mn", vim.diagnostic.goto_next)
+
+vim.keymap.set("n", "<leader>mp", function() vim.diagnostic.jump({ count = -1 }) end)
+vim.keymap.set("n", "<leader>mn", function() vim.diagnostic.jump({ count = 1 }) end)
 vim.keymap.set("n", "<leader>mm", vim.diagnostic.setloclist) -- open diagnostics pane
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- format on save
 
@@ -104,7 +122,7 @@ vim.keymap.set("n", "<leader>hp", ":Gitsigns prev_hunk<cr>")
 vim.keymap.set("n", "<leader>hv", ":Gitsigns preview_hunk_inline<cr>")
 
 -- General
-vim.keymap.set("n", "<leader>e", ":Oil<cr>")
+vim.keymap.set("n", "<leader>e", ":Oil<cr>") -- Open explorer (Oil)
 vim.keymap.set("n", "<esc>", ":noh<cr>") -- esc removes search highlights
 vim.keymap.set("n", "yA", "ggyG<C-o>") -- yank all lines
 vim.keymap.set("i", "jk", "<esc>:w<cr>l") -- insert mode save by pressing jk
@@ -113,6 +131,7 @@ vim.keymap.set("i", "jk", "<esc>:w<cr>l") -- insert mode save by pressing jk
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>") -- exit terminal insert mode w/ 2*esc
 vim.keymap.set("t", "<C-l>",  "<C-l>")
 
+-- *** LANGUAGE SPECIFIC BINDS
 -- Python string utils
 vim.keymap.set("n", "<leader>id", "o\"\"\"<esc>yypO") -- [i]nsert [d]ocstring
 vim.keymap.set("n", "<leader>cs", "i\'\'<esc>ha<cr><esc>ll") -- [c]ut [s]tring in two lines
@@ -121,7 +140,6 @@ vim.keymap.set("n", "<leader>cf", "i\'f\'<esc>hha<cr><esc>ll") -- [c]ut [f]-stri
 -- vimtex
 vim.keymap.set("n", "<leader>vv", ":VimtexView<cr>")
 vim.keymap.set("n", "<leader>vc", ":VimtexCompile<cr>")
-
 
 -- *** SETUPS
 -- Mason, LSP, Tresitter

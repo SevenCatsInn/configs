@@ -36,7 +36,8 @@
     },
 
     "pulseaudio": {
-        "format": "vol {volume}%",
-        "format-muted": "muted"
+        "format": "vol {volume}%  [{desc}]",
+        "format-muted": "muted {desc}",
+        "tooltip-format": "{desc}\n{node_name}\nvol {volume}%"
     }
 }

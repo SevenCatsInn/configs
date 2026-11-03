@@ -4,8 +4,8 @@
 }
 
 window#waybar {
-	background: #111111;
-	opacity: 0.8;
+	background: #000000;
+	opacity: 1.0;
 	border-radius: 8px;
 	/* Margins are in config! */
 }
@@ -15,6 +15,7 @@ window#waybar {
 	padding: 0 15px;
 	color: #888888;
 	border: none;
+	background: transparent;
 }
 
 #workspaces button.focused {
@@ -30,6 +31,7 @@ window#waybar {
 #window {
 	color: #ffffff;
 	padding: 0 15px;
+	background: transparent;
 }
 
 #clock,
